@@ -1,6 +1,7 @@
 Recommended skills and MCP stack for the SpaceshipGame repository
 Analysis date: 2026-05-18
 Recommendation mode: COMPREHENSIVE GOOD-PLUS SET (not minimum viable)
+Definition: a deliberately broader, still-coherent stack that covers design, authoring, engine workflow, UI workflow, testing, CI, and delivery support for this repo.
 
 SOURCES REVIEWED
 - SpaceshipGame repo: README, docs/ARCHITECTURE.md, docs/SCOPE.md, docs/COPILOT_WORKFLOW.md, .github/skills/*
