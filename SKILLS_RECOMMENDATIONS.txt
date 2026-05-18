@@ -1,182 +1,278 @@
-Recommended skills/packages for the SpaceshipGame repository
+Recommended skills and MCP stack for the SpaceshipGame repository
 Analysis date: 2026-05-18
+Recommendation mode: GOOD PLUS (not minimum viable)
 
 SOURCES REVIEWED
 - SpaceshipGame repo: README, docs/ARCHITECTURE.md, docs/SCOPE.md, docs/COPILOT_WORKFLOW.md, .github/skills/*
 - ComposioHQ/awesome-codex-skills: README plus selected SKILL.md files
 - diwad-code/bmad-module-game-dev-studio: README, docs/reference/*, and the gds-create-game-brief / gds-gdd / gds-game-architecture / gds-investigate workflow areas
+- MCP Market game-development skills catalog: https://mcpmarket.com/tools/skills/categories/game-development
+- MCP Market game-development MCP catalog: https://mcpmarket.com/categories/game-development
 
-STARTING OBSERVATIONS
+STARTING CONSTRAINTS
 - SpaceshipGame is still in Sprint 0: there is no src/ tree and no package.json yet.
-- The game repo already has two local skills: scaffold-scene and scaffold-system.
-- We should not port BMad runtime wiring 1:1; we should only adapt the intent into lightweight prompts, skills, and durable docs.
-- From awesome-codex-skills we should only add skills that complement our game-specific assets instead of duplicating current prompts/agents.
+- The repo already has two local skills: scaffold-scene and scaffold-system.
+- The approved stack is Phaser 4 + TypeScript + Vite + PWA + Dexie + Zod.
+- Mechanics are still gated by mechanika/, so any skill or MCP must support evidence-first design instead of inventing combat, progression, or quest logic.
+- We should not port BMad runtime wiring 1:1; we should adapt intent into lightweight prompts, skills, and durable docs.
+
+SELECTION RULES USED FOR THIS LIST
+1. Prefer Phaser/browser/PWA alignment over generic game-dev hype.
+2. Prefer skills that help design, mechanics, documentation, scaffolding, review, or diagnostics.
+3. Reject tools tightly bound to Unity, Unreal, Godot, Bevy, Minecraft plugin stacks, or unrelated automation.
+4. Keep one expanded “good plus” set: broad enough to be genuinely useful, but still coherent for this repo.
 
 ==================================================
-1. PRIORITY: ADAPT FROM diwad-code/bmad-module-game-dev-studio
+1. GOOD-PLUS SET TO BUILD AROUND
 ==================================================
 
+A) KEEP AND USE THE CURRENT LOCAL SKILLS
+- scaffold-scene
+  Why: already aligned with Phaser 4 scene rules and mechanika constraints.
+- scaffold-system
+  Why: already aligned with pure TypeScript system architecture and serializable state rules.
+
+B) ADAPT FROM diwad-code/bmad-module-game-dev-studio NOW
 1) game-brief package
-   Target form: prompt + doc package, not necessarily a pure skill
-   Why:
-   - establishes a stable game brief before full code scaffolding starts
-   - fits the current Sprint 0 stage very well
-   Target location:
+   Target form:
    - .github/prompts/game-brief.prompt.md
    - docs/GAME_BRIEF.md
-   Priority: VERY HIGH
+   Why it belongs in the good-plus set:
+   - establishes a durable product/vision reference before implementation expands
+   - gives every later mechanic and narrative decision a common anchor
 
 2) gdd package
-   Target form: prompt + doc package
-   Why:
-   - organizes the main Game Design Document
-   - gives later scene/system/data work a stable design reference
-   Target location:
+   Target form:
    - .github/prompts/gdd.prompt.md
    - docs/GDD.md
    - optionally docs/EPICS.md
-   Priority: VERY HIGH
+   Why it belongs:
+   - turns the repo from idea notes into a structured design system
+   - supports mechanics, event logic, UX, and production sequencing
 
 3) mechanika-spec
-   Target form: real local skill
-   Why:
-   - matches the existing mechanika/ folder perfectly
-   - helps create or refine one mechanic spec at a time without drifting the whole project
-   Target location:
+   Target form:
    - .github/skills/mechanika-spec/SKILL.md
-   Priority: VERY HIGH
+   Why it belongs:
+   - directly matches the existing mechanika/ folder
+   - best tactical tool for creating/refining one mechanic spec at a time
+   - protects against random over-invention in pending mechanics areas
 
 4) architecture package
-   Target form: prompt/doc package
-   Why:
-   - deepens architecture decisions after the brief and GDD are stable
-   - will help before larger Phaser/Vite/PWA scaffolding work
-   Target location:
+   Target form:
    - .github/prompts/architecture.prompt.md or equivalent
    - docs/ARCHITECTURE.md extensions
-   Priority: HIGH, BUT AFTER brief + GDD + mechanika-spec
+   Why it belongs:
+   - we should not stop at brief + GDD; the repo also needs a deeper technical decision layer
+   - useful before real Phaser/Vite/PWA scaffolding starts
 
 5) investigate package
-   Target form: lightweight prompt or diagnostic skill
-   Why:
-   - useful later for debugging code, CI, and unfamiliar subsystems
-   - too early right now because the repo still has no src/ tree
-   Target location:
+   Target form:
    - .github/prompts/investigate.prompt.md or a lightweight skill
-   Priority: MEDIUM / LATER
+   Why it belongs:
+   - becomes important as soon as src/, tests, workflows, and bugs appear
+   - this is not for today’s empty tree, but it should already be in the target set
 
-==================================================
-2. PRIORITY: SKILLS FROM ComposioHQ/awesome-codex-skills
-==================================================
-
+C) TAKE FROM ComposioHQ/awesome-codex-skills
 1) skill-creator
-   Why it is valuable:
-   - best bootstrap for creating and refining our own local skills
-   - directly supports the plan to adapt BMad assets into .github/skills/
-   - helps keep SKILL.md, references/, scripts/, and assets/ in a solid format
-   Priority: VERY HIGH
-   Decision: TAKE IT
+   Why it belongs:
+   - strongest bootstrap for creating and refining our own local skills
+   - directly helps adapt BMad source material into .github/skills/
 
-2) webapp-testing
-   Why it is valuable:
-   - once Vite/Phaser/PWA code exists, it gives us a practical UI and regression-testing workflow
-   - fits future scene, overlay, and PWA verification work
-   Priority: HIGH, BUT ONLY AFTER THE APP EXISTS
-   Decision: TAKE IT LATER
+2) content-research-writer
+   Why it belongs:
+   - especially useful for GAME_BRIEF, GDD, mechanika specs, ADRs, and narrative/design documentation
+   - stronger fit than a tiny planning-only skill because this repo is still documentation-heavy
 
-3) gh-fix-ci
-   Why it is valuable:
-   - once GitHub Actions exist, it will help diagnose and fix CI failures quickly
-   - fits future build/test/PWA workflow checks
-   Priority: HIGH, BUT ONLY AFTER CI EXISTS
-   Decision: TAKE IT LATER
+3) changelog-generator
+   Why it belongs:
+   - useful for release notes, milestone summaries, and visible product progress over time
 
-4) changelog-generator
-   Why it is valuable:
-   - useful for PWA/Android release notes and readable product change summaries
-   - supports ongoing changelog maintenance well
-   Priority: MEDIUM/HIGH
-   Decision: TAKE IT
+4) webapp-testing
+   Why it belongs:
+   - high future value for Phaser/PWA/browser validation
+   - should be adopted as soon as there is a runnable app shell
 
-5) codebase-migrate
-   Why it is valuable:
-   - useful later for bigger migrations and mass refactors
-   - overkill today, but potentially useful after the repo grows
-   Priority: MEDIUM / LATER
-   Decision: TAKE IT ONLY WHEN THE REPO IS LARGER
+5) gh-fix-ci
+   Why it belongs:
+   - high future value once GitHub Actions and validation workflows exist
+   - should be ready in the target stack even if activated later
 
-6) content-research-writer
-   Why it is valuable:
-   - can help with larger documentation packages: GAME_BRIEF, GDD, mechanika, ADRs
-   - mainly useful for long-form research-heavy documentation work
-   Priority: MEDIUM
-   Decision: OPTIONAL
+6) codebase-migrate
+   Why it belongs:
+   - not needed immediately, but worth keeping in the good-plus set for later bulk refactors and structure changes
+   - more relevant once src/, data files, and prompt/skill assets start to multiply
+
+D) TAKE FROM MCP MARKET SKILLS (SELECTIVELY)
+The MCP Market game-development skills catalog contains many engine-specific entries. For SpaceshipGame, the strongest fits are the ones that reinforce design and browser-game thinking rather than pushing us into another engine.
+
+1) Game Designer
+   Why it belongs:
+   - strongest direct fit for mechanics framing, event design, pacing, and player-facing loop quality
+   - useful while mechanika/ is still becoming the source of truth
+
+2) Gameplay Programmer
+   Why it belongs:
+   - good complement to our system-oriented architecture work
+   - helps translate approved mechanics into clean, testable gameplay systems later
+
+3) Level Designer
+   Why it belongs:
+   - relevant for beacon/map flow, event pacing, encounter distribution, and progression across sectors
+   - useful even in a management game because map and encounter structure still shape the experience
+
+4) Game Artist (later-phase support)
+   Why it belongs:
+   - useful once the project moves from placeholder art to more intentional UI/art direction
+   - not core today, but worth including in a good-plus set instead of a minimum list
+
+E) TAKE FROM MCP MARKET MCP SERVERS (ENGINE-ALIGNED FIRST)
+1) Phaser MCP / Phaser by phaserjs
+   Why it belongs:
+   - most direct MCP fit for a Phaser-first project
+   - useful for scene scaffolding, asset wiring, and engine-aware assistance
+
+2) Phaser Editor MCP Server
+   Why it belongs:
+   - strong fit if we use Phaser Editor v5 in the workflow
+   - useful for scene, asset, tilemap, and editor-assisted content flow
+
+3) Figma MCP Server
+   Why it belongs:
+   - strong support for UI/UX overlays, HUD planning, responsive layout review, and design handoff
+   - good match for the repo’s mobile-first and overlay-heavy UI direction
+
+4) Blender MCP Server
+   Why it belongs:
+   - secondary but useful for future asset/pipeline work, mockups, and pre-rendered visual assets
+   - not Phaser-specific, but still relevant to a browser game art pipeline
+
+5) PWA Kit MCP Server (later, workflow support)
+   Why it belongs:
+   - not game-specific, but relevant for browser-first/PWA delivery discipline
+   - useful later for installability, accessibility, and web delivery checks
 
 ==================================================
-3. FROM awesome-codex-skills: DO NOT TAKE YET
+2. WATCHLIST / SECOND WAVE
 ==================================================
 
+A) FROM awesome-codex-skills
+- create-plan
+  Useful, but not as strategically important as content-research-writer for the repo’s current stage.
 - template-skill
-  Reason: too bare; skill-creator is much stronger.
+  Keep only as a reference; skill-creator is the real pick.
 
-- skill-share
-  Reason: depends on Slack/Rube and adds little value at the current stage.
+B) FROM MCP MARKET SKILLS
+- Three.js Fundamentals
+- Three.js Asset Loading
+- Three.js Interaction Suite
+- Three.js Post-Processing
+  Why only second-wave:
+  - they are promising for browser graphics work, star-map experiments, or special visual layers
+  - they are not direct fits for a 2D Phaser management game today
 
-- issue-triage / linear / notion-spec-to-implementation / connect / connect-apps
-  Reason: require external integrations and processes we have not confirmed for this project.
+C) FROM MCP MARKET MCPS
+- Blender and Figma are already in the good-plus set as secondary pipeline tools.
+- Any additional engine-specific MCP should stay in the watchlist unless we adopt that tool in practice.
 
-- file-organizer
-  Reason: more useful for personal filesystem cleanup than for this game repo workflow.
+==================================================
+3. DO NOT PRIORITIZE FOR THIS REPO NOW
+==================================================
 
-- deploy-pipeline / sentry-triage / pr-review-ci-fix / mcp-builder
-  Reason: too early for the current Sprint 0 state.
+A) ENGINE-MISMATCHED SKILLS
+- Unity Developer / Unity ECS Patterns / Unity Game Developer Expert
+- Unreal Engine Developer / Unreal Engine C++ Pro / Unreal analyzers
+- Godot-specific implementation skills and migration assistants
+- Bevy ECS Expert
+- Minecraft Bukkit & Paper Pro
+
+Reason:
+- they are powerful, but they pull the repo away from Phaser 4 and would create noisy guidance rather than helpful guidance.
+
+B) UNRELATED OR TOO-SPECIFIC AUTOMATION SKILLS
+- Dungeon Fighter Online Automation
+- Epic Games Automation
+- platform-specific or game-specific automation entries unrelated to SpaceshipGame
+
+Reason:
+- these solve somebody else’s workflow, not ours.
+
+C) EXTERNAL-INTEGRATION SKILLS WE SHOULD ONLY ADD IF PROCESS REQUIRES THEM
+- issue-triage / linear / notion-spec-to-implementation / connect / connect-apps / skill-share
+
+Reason:
+- they may become useful later, but today they are not central to building the game repo itself.
 
 ==================================================
 4. RECOMMENDED IMPLEMENTATION ORDER
 ==================================================
 
-1. Keep the current local skills:
-   - scaffold-scene
-   - scaffold-system
+PHASE 1 — DESIGN AND DESIGN-CONTEXT LAYER
+- keep scaffold-scene
+- keep scaffold-system
+- adapt game-brief package
+- adapt gdd package
+- adapt mechanika-spec
+- adapt architecture package
 
-2. First adapt from BMad:
-   - game-brief package
-   - gdd package
-   - mechanika-spec
+PHASE 2 — DOCUMENTATION / AUTHORING SUPPORT
+- add skill-creator
+- add content-research-writer
+- add changelog-generator
+- prepare investigate package
 
-3. Add from awesome-codex-skills right away:
-   - skill-creator
-   - changelog-generator
+PHASE 3 — ENGINE AND UI WORKFLOW SUPPORT
+- add Phaser MCP / Phaser by phaserjs
+- add Phaser Editor MCP Server
+- add Figma MCP Server
 
-4. After a real src/ tree and runnable app exist, add:
-   - webapp-testing
+PHASE 4 — WHEN THE APP EXISTS
+- add webapp-testing
+- optionally evaluate Three.js second-wave skills only if a real browser-graphics need appears
 
-5. After GitHub Actions/workflows are added, add:
-   - gh-fix-ci
-
-6. When the repo is larger and refactors become heavier, add:
-   - codebase-migrate
-
-7. When we do larger design/docs research packages, add:
-   - content-research-writer
+PHASE 5 — WHEN DELIVERY AND AUTOMATION MATURE
+- add gh-fix-ci
+- add PWA Kit MCP Server
+- keep codebase-migrate ready for bigger refactors
+- add Blender MCP Server when the art pipeline needs it
 
 ==================================================
-5. MINIMAL SENSIBLE TARGET SET FOR SpaceshipGame
+5. FINAL GOOD-PLUS TARGET SET FOR SpaceshipGame
 ==================================================
 
-- scaffold-scene (already present)
-- scaffold-system (already present)
-- game-brief package (adapted from BMad)
-- gdd package (adapted from BMad)
-- mechanika-spec (adapted from BMad)
-- skill-creator (from awesome-codex-skills)
-- changelog-generator (from awesome-codex-skills)
-- webapp-testing (from awesome-codex-skills, activate after app scaffolding)
-- gh-fix-ci (from awesome-codex-skills, activate after CI arrives)
+PROJECT-SIDE / ADAPTED
+- scaffold-scene
+- scaffold-system
+- game-brief package
+- gdd package
+- mechanika-spec
+- architecture package
+- investigate package
 
-SHORT WORKING DECISION
-If we want a small, practical starter set, the recommendation is:
-1. First adapt from BMad: game-brief, gdd, mechanika-spec.
-2. Add from awesome immediately: skill-creator and changelog-generator.
-3. Add webapp-testing only after code scaffolding exists.
-4. Add gh-fix-ci only after CI exists.
+GENERAL SKILLS
+- skill-creator
+- content-research-writer
+- changelog-generator
+- webapp-testing
+- gh-fix-ci
+- codebase-migrate
+
+MCP MARKET SKILLS
+- Game Designer
+- Gameplay Programmer
+- Level Designer
+- Game Artist (later-phase support)
+
+MCP SERVERS
+- Phaser MCP / Phaser by phaserjs
+- Phaser Editor MCP Server
+- Figma MCP Server
+- Blender MCP Server
+- PWA Kit MCP Server
+
+SHORT DECISION
+If we want a stronger non-minimum stack for this repo, the best direction is:
+1. Build the design layer first: game-brief, gdd, mechanika-spec, architecture.
+2. Add authoring support next: skill-creator, content-research-writer, changelog-generator.
+3. Add Phaser- and UI-aligned MCPs next: Phaser MCP, Phaser Editor MCP Server, Figma MCP Server.
+4. Add testing/CI/PWA delivery support as soon as the app and workflows actually exist.

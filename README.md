@@ -25,6 +25,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/IDEAS_LATER.md` — deferred ideas and scope-control list.
 - `docs/COPILOT_WORKFLOW.md` — natural-language guide for using `/prompt-game-dev`, `/prompt-new-scene`, `/prompt-new-system`, and related prompts.
 - `docs/ADRs/ADR-001-stack.md` — stack decision record.
+- `SKILLS_RECOMMENDATIONS.txt` — expanded shortlist of recommended skills and MCP servers for the repo.
 - `.github/copilot-instructions.md` — always-on Copilot project rules.
 - `mechanika/00-template-do-wypelnienia.md` — form to fill in with final gameplay mechanics.
 
