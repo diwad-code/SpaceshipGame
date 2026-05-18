@@ -1,6 +1,6 @@
 Recommended skills and MCP stack for the SpaceshipGame repository
 Analysis date: 2026-05-18
-Recommendation mode: GOOD PLUS (not minimum viable)
+Recommendation mode: COMPREHENSIVE GOOD-PLUS SET (not minimum viable)
 
 SOURCES REVIEWED
 - SpaceshipGame repo: README, docs/ARCHITECTURE.md, docs/SCOPE.md, docs/COPILOT_WORKFLOW.md, .github/skills/*
