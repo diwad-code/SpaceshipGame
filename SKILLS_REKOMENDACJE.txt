@@ -1,182 +1,182 @@
-Rekomendowane skills/pakiety dla repo SpaceshipGame
-Data analizy: 2026-05-18
+Recommended skills/packages for the SpaceshipGame repository
+Analysis date: 2026-05-18
 
-ŹRÓDŁA PRZEANALIZOWANE
-- repo SpaceshipGame: README, docs/ARCHITECTURE.md, docs/SCOPE.md, docs/COPILOT_WORKFLOW.md, .github/skills/*
-- repo ComposioHQ/awesome-codex-skills: README + wybrane SKILL.md
-- repo diwad-code/bmad-module-game-dev-studio: README, docs/reference/*, katalogi workflowów gds-create-game-brief / gds-gdd / gds-game-architecture / gds-investigate
+SOURCES REVIEWED
+- SpaceshipGame repo: README, docs/ARCHITECTURE.md, docs/SCOPE.md, docs/COPILOT_WORKFLOW.md, .github/skills/*
+- ComposioHQ/awesome-codex-skills: README plus selected SKILL.md files
+- diwad-code/bmad-module-game-dev-studio: README, docs/reference/*, and the gds-create-game-brief / gds-gdd / gds-game-architecture / gds-investigate workflow areas
 
-WAŻNE WNIOSKI STARTOWE
-- SpaceshipGame jest nadal w Sprint 0: brak src/ i brak package.json.
-- W repo gry są już dwa lokalne skills: scaffold-scene i scaffold-system.
-- Z repo bmad-module-game-dev-studio nie warto przenosić runtime BMad 1:1; warto przenosić tylko sens, prompty, lekkie skille i trwałą dokumentację.
-- Z awesome-codex-skills warto brać tylko rzeczy uzupełniające nasze game-specific assety, a nie dublujące obecne prompty/agentów.
+STARTING OBSERVATIONS
+- SpaceshipGame is still in Sprint 0: there is no src/ tree and no package.json yet.
+- The game repo already has two local skills: scaffold-scene and scaffold-system.
+- We should not port BMad runtime wiring 1:1; we should only adapt the intent into lightweight prompts, skills, and durable docs.
+- From awesome-codex-skills we should only add skills that complement our game-specific assets instead of duplicating current prompts/agents.
 
 ==================================================
-1. PRIORYTET: ADAPTACJE Z diwad-code/bmad-module-game-dev-studio
+1. PRIORITY: ADAPT FROM diwad-code/bmad-module-game-dev-studio
 ==================================================
 
 1) game-brief package
-   Docelowo: prompt + doc package, nie koniecznie czysty skill
-   Po co:
-   - ustala spójny brief gry przed wejściem w pełny kod
-   - dobrze pasuje do obecnego etapu Sprint 0
-   Docelowe miejsce:
+   Target form: prompt + doc package, not necessarily a pure skill
+   Why:
+   - establishes a stable game brief before full code scaffolding starts
+   - fits the current Sprint 0 stage very well
+   Target location:
    - .github/prompts/game-brief.prompt.md
    - docs/GAME_BRIEF.md
-   Priorytet: BARDZO WYSOKI
+   Priority: VERY HIGH
 
 2) gdd package
-   Docelowo: prompt + doc package
-   Po co:
-   - porządkuje główny Game Design Document
-   - daje stabilny punkt odniesienia dla późniejszych scene/system/data skills
-   Docelowe miejsce:
+   Target form: prompt + doc package
+   Why:
+   - organizes the main Game Design Document
+   - gives later scene/system/data work a stable design reference
+   Target location:
    - .github/prompts/gdd.prompt.md
    - docs/GDD.md
-   - opcjonalnie docs/EPICS.md
-   Priorytet: BARDZO WYSOKI
+   - optionally docs/EPICS.md
+   Priority: VERY HIGH
 
 3) mechanika-spec
-   Docelowo: prawdziwy lokalny skill
-   Po co:
-   - idealnie pasuje do folderu mechanika/
-   - pomaga dopisywać i doprecyzowywać pojedyncze specy mechanik bez rozjeżdżania reszty projektu
-   Docelowe miejsce:
+   Target form: real local skill
+   Why:
+   - matches the existing mechanika/ folder perfectly
+   - helps create or refine one mechanic spec at a time without drifting the whole project
+   Target location:
    - .github/skills/mechanika-spec/SKILL.md
-   Priorytet: BARDZO WYSOKI
+   Priority: VERY HIGH
 
 4) architecture package
-   Docelowo: prompt/doc package
-   Po co:
-   - pogłębia decyzje architektoniczne po ustabilizowaniu briefu i GDD
-   - przyda się przed większym scaffoldingiem Phaser/Vite/PWA
-   Docelowe miejsce:
-   - .github/prompts/architecture.prompt.md albo odpowiednik
-   - docs/ARCHITECTURE.md (rozszerzenie)
-   Priorytet: WYSOKI, ALE PO brief + GDD + mechanika-spec
+   Target form: prompt/doc package
+   Why:
+   - deepens architecture decisions after the brief and GDD are stable
+   - will help before larger Phaser/Vite/PWA scaffolding work
+   Target location:
+   - .github/prompts/architecture.prompt.md or equivalent
+   - docs/ARCHITECTURE.md extensions
+   Priority: HIGH, BUT AFTER brief + GDD + mechanika-spec
 
 5) investigate package
-   Docelowo: lekki prompt lub skill diagnostyczny
-   Po co:
-   - przyda się później do badania problemów w kodzie, CI i subsystemach
-   - teraz jest jeszcze za wcześnie, bo repo nie ma drzewa src/
-   Docelowe miejsce:
-   - .github/prompts/investigate.prompt.md lub lekki skill
-   Priorytet: ŚREDNI / PÓŹNIEJ
+   Target form: lightweight prompt or diagnostic skill
+   Why:
+   - useful later for debugging code, CI, and unfamiliar subsystems
+   - too early right now because the repo still has no src/ tree
+   Target location:
+   - .github/prompts/investigate.prompt.md or a lightweight skill
+   Priority: MEDIUM / LATER
 
 ==================================================
-2. PRIORYTET: SKILLS Z ComposioHQ/awesome-codex-skills
+2. PRIORITY: SKILLS FROM ComposioHQ/awesome-codex-skills
 ==================================================
 
 1) skill-creator
-   Dlaczego warto:
-   - to najlepszy bootstrap do tworzenia i dopracowywania naszych własnych skills
-   - bardzo dobrze wspiera plan przenoszenia/adaptacji assets z repo BMad do .github/skills/
-   - pomaga utrzymać poprawny format SKILL.md, references/, scripts/ i assets/
-   Priorytet: BARDZO WYSOKI
-   Wniosek: BRAĆ
+   Why it is valuable:
+   - best bootstrap for creating and refining our own local skills
+   - directly supports the plan to adapt BMad assets into .github/skills/
+   - helps keep SKILL.md, references/, scripts/, and assets/ in a solid format
+   Priority: VERY HIGH
+   Decision: TAKE IT
 
 2) webapp-testing
-   Dlaczego warto:
-   - po pojawieniu się Vite/Phaser/PWA da nam sensowny workflow do testów UI i regresji
-   - dobrze pasuje do przyszłych scen, overlayów HTML/CSS i testów PWA
-   Priorytet: WYSOKI, ALE DOPIERO PO SCAFFOLDZIE APLIKACJI
-   Wniosek: BRAĆ PÓŹNIEJ
+   Why it is valuable:
+   - once Vite/Phaser/PWA code exists, it gives us a practical UI and regression-testing workflow
+   - fits future scene, overlay, and PWA verification work
+   Priority: HIGH, BUT ONLY AFTER THE APP EXISTS
+   Decision: TAKE IT LATER
 
 3) gh-fix-ci
-   Dlaczego warto:
-   - po wejściu workflowów GitHub Actions ułatwi diagnozę i naprawę CI
-   - dobrze pasuje do przyszłych build/test/PWA checks
-   Priorytet: WYSOKI, ALE DOPIERO GDY BĘDZIE CI
-   Wniosek: BRAĆ PÓŹNIEJ
+   Why it is valuable:
+   - once GitHub Actions exist, it will help diagnose and fix CI failures quickly
+   - fits future build/test/PWA workflow checks
+   Priority: HIGH, BUT ONLY AFTER CI EXISTS
+   Decision: TAKE IT LATER
 
 4) changelog-generator
-   Dlaczego warto:
-   - przyda się do release notes dla PWA/Android i do czytelnych zmian produktowych
-   - dobrze wspiera utrzymywanie changelogów i podsumowań wersji
-   Priorytet: ŚREDNI/WYSOKI
-   Wniosek: BRAĆ
+   Why it is valuable:
+   - useful for PWA/Android release notes and readable product change summaries
+   - supports ongoing changelog maintenance well
+   Priority: MEDIUM/HIGH
+   Decision: TAKE IT
 
 5) codebase-migrate
-   Dlaczego warto:
-   - będzie pomocny dopiero przy większych migracjach i masowych refaktorach
-   - dziś repo jest zbyt małe, ale później może być przydatny przy większej reorganizacji scen/systemów/data
-   Priorytet: ŚREDNI / PÓŹNIEJ
-   Wniosek: BRAĆ TYLKO GDY REPO UROŚNIE
+   Why it is valuable:
+   - useful later for bigger migrations and mass refactors
+   - overkill today, but potentially useful after the repo grows
+   Priority: MEDIUM / LATER
+   Decision: TAKE IT ONLY WHEN THE REPO IS LARGER
 
 6) content-research-writer
-   Dlaczego warto:
-   - może pomóc przy większych paczkach dokumentacji: GAME_BRIEF, GDD, mechanika, ADR-y
-   - ma sens głównie do długich, researchowych dokumentów
-   Priorytet: ŚREDNI
-   Wniosek: OPCJONALNIE
+   Why it is valuable:
+   - can help with larger documentation packages: GAME_BRIEF, GDD, mechanika, ADRs
+   - mainly useful for long-form research-heavy documentation work
+   Priority: MEDIUM
+   Decision: OPTIONAL
 
 ==================================================
-3. Z awesome-codex-skills NA RAZIE NIE BRAĆ
+3. FROM awesome-codex-skills: DO NOT TAKE YET
 ==================================================
 
 - template-skill
-  Powód: za mało wnosi; skill-creator jest wyraźnie mocniejszy.
+  Reason: too bare; skill-creator is much stronger.
 
 - skill-share
-  Powód: zależność od Slack/Rube; na obecnym etapie to zbędne.
+  Reason: depends on Slack/Rube and adds little value at the current stage.
 
 - issue-triage / linear / notion-spec-to-implementation / connect / connect-apps
-  Powód: wymagają zewnętrznych integracji i procesów, których nie mamy jeszcze potwierdzonych w tym projekcie.
+  Reason: require external integrations and processes we have not confirmed for this project.
 
 - file-organizer
-  Powód: bardziej porządkuje lokalny komputer niż workflow repo gry.
+  Reason: more useful for personal filesystem cleanup than for this game repo workflow.
 
 - deploy-pipeline / sentry-triage / pr-review-ci-fix / mcp-builder
-  Powód: za wcześnie względem stanu repo i obecnego etapu Sprint 0.
+  Reason: too early for the current Sprint 0 state.
 
 ==================================================
-4. REKOMENDOWANA KOLEJNOŚĆ WDROŻENIA
+4. RECOMMENDED IMPLEMENTATION ORDER
 ==================================================
 
-1. Zostawić obecne local skills:
+1. Keep the current local skills:
    - scaffold-scene
    - scaffold-system
 
-2. Z repo BMad zaadaptować jako pierwsze:
+2. First adapt from BMad:
    - game-brief package
    - gdd package
    - mechanika-spec
 
-3. Z awesome-codex-skills dodać od razu:
+3. Add from awesome-codex-skills right away:
    - skill-creator
    - changelog-generator
 
-4. Po utworzeniu realnego src/ i lokalnego uruchamiania aplikacji dodać:
+4. After a real src/ tree and runnable app exist, add:
    - webapp-testing
 
-5. Po dodaniu GitHub Actions/workflowów dodać:
+5. After GitHub Actions/workflows are added, add:
    - gh-fix-ci
 
-6. Gdy repo urośnie i pojawią się większe refaktory/migracje:
+6. When the repo is larger and refactors become heavier, add:
    - codebase-migrate
 
-7. Gdy będziemy robić większe paczki design/docs research:
+7. When we do larger design/docs research packages, add:
    - content-research-writer
 
 ==================================================
-5. MINIMALNY SENSOWNY ZESTAW DOCELOWY DLA SpaceshipGame
+5. MINIMAL SENSIBLE TARGET SET FOR SpaceshipGame
 ==================================================
 
-- scaffold-scene (już jest)
-- scaffold-system (już jest)
-- game-brief package (adaptacja z BMad)
-- gdd package (adaptacja z BMad)
-- mechanika-spec (adaptacja z BMad)
-- skill-creator (z awesome-codex-skills)
-- changelog-generator (z awesome-codex-skills)
-- webapp-testing (z awesome-codex-skills, aktywować po scaffoldzie aplikacji)
-- gh-fix-ci (z awesome-codex-skills, aktywować po wejściu CI)
+- scaffold-scene (already present)
+- scaffold-system (already present)
+- game-brief package (adapted from BMad)
+- gdd package (adapted from BMad)
+- mechanika-spec (adapted from BMad)
+- skill-creator (from awesome-codex-skills)
+- changelog-generator (from awesome-codex-skills)
+- webapp-testing (from awesome-codex-skills, activate after app scaffolding)
+- gh-fix-ci (from awesome-codex-skills, activate after CI arrives)
 
-KRÓTKA DECYZJA ROBOCZA
-Jeśli mamy wybrać mały, praktyczny zestaw na start, to rekomenduję:
-1. Najpierw adaptacje z BMad: game-brief, gdd, mechanika-spec.
-2. Z awesome od razu: skill-creator i changelog-generator.
-3. Dopiero po wejściu kodu: webapp-testing.
-4. Dopiero po wejściu CI: gh-fix-ci.
+SHORT WORKING DECISION
+If we want a small, practical starter set, the recommendation is:
+1. First adapt from BMad: game-brief, gdd, mechanika-spec.
+2. Add from awesome immediately: skill-creator and changelog-generator.
+3. Add webapp-testing only after code scaffolding exists.
+4. Add gh-fix-ci only after CI exists.
