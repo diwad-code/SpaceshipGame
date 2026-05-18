@@ -9,6 +9,7 @@ SOURCES REVIEWED
 - diwad-code/bmad-module-game-dev-studio: README, docs/reference/*, and the gds-create-game-brief / gds-gdd / gds-game-architecture / gds-investigate workflow areas
 - MCP Market game-development skills catalog: https://mcpmarket.com/tools/skills/categories/game-development
 - MCP Market game-development MCP catalog: https://mcpmarket.com/categories/game-development
+- Additional MCP and agent-skill directories summarized in docs/skills-adoption/README.md
 
 STARTING CONSTRAINTS
 - SpaceshipGame is still in Sprint 0: there is no src/ tree and no package.json yet.
@@ -268,6 +269,12 @@ MCP SERVERS
 - Phaser MCP / Phaser by phaserjs
 - Phaser Editor MCP Server
 - Figma MCP Server
+- Microsoft Playwright MCP
+- Context7 MCP or equivalent docs-grounding MCP
+- GitHub MCP Server (when GitHub workflow automation is needed)
+- Sequential Thinking MCP (for complex multi-phase decisions)
+- Memory MCP (only with explicit retention/privacy rules)
+- Brave Search MCP or equivalent live-search MCP (only with approved API-key handling)
 - Blender MCP Server
 - PWA Kit MCP Server
 
@@ -277,3 +284,4 @@ If we want a stronger non-minimum stack for this repo, the best direction is:
 2. Add authoring support next: skill-creator, content-research-writer, changelog-generator.
 3. Add Phaser- and UI-aligned MCPs next: Phaser MCP, Phaser Editor MCP Server, Figma MCP Server.
 4. Add testing/CI/PWA delivery support as soon as the app and workflows actually exist.
+5. Use docs/skills-adoption/README.md plus /prompt-skills-adoption as the autonomous adoption mechanism for executing this order.

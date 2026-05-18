@@ -13,6 +13,7 @@ Nie zaczynaj od `/prompt-new-scene` albo `/prompt-new-system`, jeśli nie masz j
 | Prompt | Kiedy używać | Co robi |
 |---|---|---|
 | `/prompt-game-dev` | Zawsze na początku sesji albo gdy nie wiesz, co dalej | Sprawdza projekt, dokumenty, braki i proponuje następne kroki |
+| `/prompt-skills-adoption` | Gdy chcesz wdrożyć zatwierdzony zestaw skills/MCP | Czyta `SKILLS_RECOMMENDATIONS.txt` i `docs/skills-adoption/README.md`, wykonuje odblokowane kroki i raportuje blokery |
 | `/prompt-new-scene` | Gdy potrzebujesz nowego ekranu/sceny gry | Tworzy lub planuje scenę Phaser 4, np. `BootScene`, `BridgeScene` |
 | `/prompt-new-system` | Gdy potrzebujesz nowego modułu logiki gry | Tworzy system TypeScript, np. `CrewSystem`, `ResourceSystem` |
 | `/prompt-new-event` | Gdy chcesz dodać losowe zdarzenie do gry | Tworzy event data-driven z wyborami i ważonymi wynikami |
@@ -102,6 +103,16 @@ Do czasu dostarczenia `mechanika/` eventy mają być proste: zasoby, proste uszk
 ```
 
 Cel: Copilot ma przypomnieć sobie dokumentację i sprawdzić, czego brakuje.
+
+### Etap 0.5 — research i wdrażanie skills/MCP
+
+Gdy chcesz wykonać zatwierdzony rollout skills/MCP:
+
+```text
+/prompt-skills-adoption wykonaj odblokowane kroki z listy rekomendacji
+```
+
+Cel: Copilot ma przejść przez listę, wykonać tylko kroki zgodne z aktualnym stanem repozytorium i zapisać blokery dla etapów wymagających aplikacji, CI albo zewnętrznych usług.
 
 ### Etap 1 — przygotowanie projektu technicznego
 
@@ -314,6 +325,7 @@ Najczęściej będziesz używać:
 
 ```text
 /prompt-game-dev
+/prompt-skills-adoption
 /prompt-new-scene
 /prompt-new-system
 /prompt-data-schema

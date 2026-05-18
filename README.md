@@ -26,6 +26,8 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/COPILOT_WORKFLOW.md` — natural-language guide for using `/prompt-game-dev`, `/prompt-new-scene`, `/prompt-new-system`, and related prompts.
 - `docs/ADRs/ADR-001-stack.md` — stack decision record.
 - `SKILLS_RECOMMENDATIONS.txt` — curated good-plus set of recommended skills and MCP servers for the repo.
+- `docs/skills-adoption/README.md` — expanded research and adoption order for skills/MCP rollout.
+- `.github/prompts/skills-adoption.prompt.md` — autonomous prompt for executing the skills/MCP adoption plan.
 - `.github/copilot-instructions.md` — always-on Copilot project rules.
 - `mechanika/00-template-do-wypelnienia.md` — form to fill in with final gameplay mechanics.
 
@@ -35,4 +37,5 @@ Use the project Copilot assets first, then scaffold the codebase:
 
 1. Run `/prompt-game-dev` in Copilot Chat after opening this folder in VS Code.
 2. Let it verify project foundations.
-3. Scaffold the Vite + Phaser project only after the documentation and `.github/` assets are in place.
+3. Use `/prompt-skills-adoption` when you want the agent to execute the approved skills/MCP rollout from the research docs.
+4. Scaffold the Vite + Phaser project only after the documentation and `.github/` assets are in place.
