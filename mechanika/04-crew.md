@@ -551,7 +551,3 @@ pozostałych plików `mechanika/`:
 - Głosy wewnętrzne kapitana z progami aktywacji
 - System relacji interpersonalnych 3-poziomowy
 - Mechanika torporu i jej efekty na parametry
-
-**Następne pliki:**
-- `mechanika/03-resources.md` — zasoby i ECLSS grounded w nauce
-- `mechanika/07-events.md` — 15 eventów MVP z checkami
