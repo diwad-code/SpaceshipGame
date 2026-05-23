@@ -110,7 +110,7 @@ When documents overlap, resolve conflicts in this order:
 4. `docs/ADRs/` for accepted technical decisions.
 5. `docs/ARCHITECTURE.md` for project structure and system boundaries.
 6. `.github/copilot-instructions.md` for day-to-day Copilot behavior.
-7. `claude_tips/` as reference material only; it is not authoritative.
+7. `claude_tips/`, `dodatki/research/`, and `dodatki/skills/` as reference material only; they are not authoritative.
 
 ## Core systems
 

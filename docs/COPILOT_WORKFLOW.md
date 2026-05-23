@@ -12,6 +12,13 @@ Nie zaczynaj od `/new-scene` albo `/new-system`, jeśli nie masz jeszcze gotoweg
 
 W obecnym Sprint 0 przed mechaniką najpierw porządkuj: **brief → fabułę → GDD → adoption skills**.
 
+## Materiały kreatywne poza source of truth
+
+- `dodatki/research/` traktuj jako pakiet researchowy i kreatywny, nie jako automatycznie zatwierdzoną specyfikację.
+- `dodatki/skills/` traktuj jako bibliotekę zewnętrznych skilli do przeglądu.
+- Aktywne, repozytoryjne skille nadal mieszkają w `.github/skills/`.
+- Jeśli coś z `dodatki/` staje się standardem pracy, zapisz wynik w `docs/`, `mechanika/` albo zaadaptuj skill przez `.github/skills/incoming/`.
+
 ## Co oznaczają nasze przełączniki
 
 | Prompt | Kiedy używać | Co robi |
@@ -115,6 +122,12 @@ Cel: Copilot ma przypomnieć sobie dokumentację i sprawdzić, czego brakuje.
 ### Etap 0.25 — brief i fabuła przed mechaniką
 
 Zanim zaczniesz uszczegóławiać mechanikę, ustaw fundament narracyjny:
+
+Jeśli potrzebujesz materiału wejściowego do tej fazy, najpierw przejrzyj:
+
+- `dodatki/research/00-RESEARCH-KONTEKST.md`
+- `dodatki/research/01-PROPOZYCJE-MECHANIK.md`
+- `docs/CREATIVE_INPUTS.md`
 
 ```text
 /game-brief uporządkuj krótki brief projektu i misji
