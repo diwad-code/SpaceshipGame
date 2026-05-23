@@ -284,7 +284,7 @@ MCP SERVERS
 
 SHORT DECISION
 If we want a stronger non-minimum stack for this repo, the best direction is:
-1. Build the design layer first: game-brief, gdd, mechanika-spec, architecture.
+1. Build the design layer first: game-brief, fabula, gdd, mechanika-spec, architecture.
 2. Add authoring support next: skill-creator, content-research-writer, changelog-generator.
 3. Add Phaser- and UI-aligned MCPs next: Phaser MCP, Phaser Editor MCP Server, Figma MCP Server.
 4. Add testing/CI/PWA delivery support as soon as the app and workflows actually exist.
