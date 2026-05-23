@@ -10,7 +10,7 @@ tools:
   - execute/runTests
 ---
 
-# /prompt-new-system
+# /new-system
 
 Create or update a game system for: `${input:systemName}`.
 

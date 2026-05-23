@@ -11,7 +11,7 @@ tools:
   - execute/runTests
 ---
 
-# /prompt-game-dev
+# /game-dev
 
 You are the project orchestrator for SpaceshipGame.
 

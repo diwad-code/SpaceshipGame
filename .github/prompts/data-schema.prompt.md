@@ -10,7 +10,7 @@ tools:
   - execute/runTests
 ---
 
-# /prompt-data-schema
+# /data-schema
 
 Create or update the data schema for: `${input:schemaName}`.
 

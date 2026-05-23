@@ -23,7 +23,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/ARCHITECTURE.md` — approved architecture and integration points for future mechanics.
 - `docs/SCOPE.md` — what is and is not in the MVP.
 - `docs/IDEAS_LATER.md` — deferred ideas and scope-control list.
-- `docs/COPILOT_WORKFLOW.md` — natural-language guide for using `/prompt-game-dev`, `/prompt-new-scene`, `/prompt-new-system`, and related prompts.
+- `docs/COPILOT_WORKFLOW.md` — natural-language guide for using `/game-dev`, `/new-scene`, `/new-system`, and related prompts.
 - `docs/ADRs/ADR-001-stack.md` — stack decision record.
 - `SKILLS_RECOMMENDATIONS.txt` — curated good-plus set of recommended skills and MCP servers for the repo.
 - `docs/skills-adoption/README.md` — expanded research and adoption order for skills/MCP rollout.
@@ -35,7 +35,17 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 
 Use the project Copilot assets first, then scaffold the codebase:
 
-1. Run `/prompt-game-dev` in Copilot Chat after opening this folder in VS Code.
-2. Let it verify project foundations.
-3. Use `/prompt-skills-adoption` when you want the agent to execute the approved skills/MCP rollout from the research docs.
-4. Scaffold the Vite + Phaser project only after the documentation and `.github/` assets are in place.
+1. Open this folder in VS Code with GitHub Copilot Chat enabled.
+2. Use the custom prompt slash commands that match each prompt file `name:` field:
+   - `/game-dev` — check repo state and ask for the next 1-3 steps
+   - `/skills-adoption` — execute the approved skills/MCP rollout from the research docs
+   - `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`
+3. Start with `/game-dev`, let it verify project foundations, and only scaffold the Vite + Phaser project after the documentation and `.github/` assets are in place.
+4. Because this repository is still in Sprint 0, there is no `package.json`, no `src/`, and no runnable npm command yet.
+
+## If the slash commands do not appear
+
+1. Make sure you opened the repository root in VS Code, not a parent folder.
+2. Confirm the prompt files exist in `.github/prompts/`.
+3. Use the command names above without the `prompt-` prefix, because Copilot takes the slash command name from each prompt file's `name:` field.
+4. If VS Code still does not list them, reload the window and try again; as a fallback, open the matching file in `.github/prompts/` and paste its instructions into chat manually.

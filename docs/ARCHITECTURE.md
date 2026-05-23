@@ -39,6 +39,7 @@ SpaceshipGame/
 │   │   └── mobile-ux.instructions.md
 │   ├── prompts/
 │   │   ├── game-dev.prompt.md
+│   │   ├── skills-adoption.prompt.md
 │   │   ├── new-scene.prompt.md
 │   │   ├── new-system.prompt.md
 │   │   ├── new-event.prompt.md
@@ -70,7 +71,6 @@ SpaceshipGame/
 │   ├── models/
 │   ├── scenes/
 │   ├── systems/
-│   ├── state/
 │   ├── storage/
 │   ├── ui/
 │   ├── types/
@@ -81,6 +81,8 @@ SpaceshipGame/
 ```
 
 ## Source of truth order
+
+Custom Copilot slash commands come from each prompt file `name:` field, so the active commands are `/game-dev`, `/skills-adoption`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`.
 
 When documents overlap, resolve conflicts in this order:
 

@@ -9,7 +9,7 @@ tools:
   - execute/runInTerminal
 ---
 
-# /prompt-pwa-check
+# /pwa-check
 
 Audit the project for PWA readiness.
 
