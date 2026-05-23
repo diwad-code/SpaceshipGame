@@ -184,6 +184,19 @@ These are additions to the previous target set, grouped by adoption value.
 - `Memory MCP` only with explicit retention and privacy rules.
 - `Brave Search MCP` or equivalent live-search MCP if API-key handling is approved.
 
+## Current staged incoming skills
+
+The missing recommended skills have been staged in `.github/skills/incoming/` instead of activated immediately:
+
+- `changelog-generator` — waiting for a real changelog/release workflow.
+- `webapp-testing` — waiting for `package.json`, `src/`, and a runnable app shell.
+- `gh-fix-ci` — waiting for GitHub Actions workflows.
+- `codebase-migrate` — waiting for a real codebase that needs larger refactors.
+- `game-designer` — available for review, but still staged until we decide it should become a standard local skill.
+- `gameplay-programmer` — waiting for app scaffold and approved mechanic specs beyond stubs.
+- `level-designer` — staged for later sector/beacon pacing work.
+- `game-artist` — waiting for an explicit art/design pipeline.
+
 ### Keep in second-wave/watchlist
 
 - `Blender MCP Server` for art/promo/mockup pipeline.

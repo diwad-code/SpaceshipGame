@@ -301,5 +301,5 @@ If we want a stronger non-minimum stack for this repo, the best direction is:
 
 CURRENT LOCAL AVAILABILITY AFTER SPRINT 0 DOCS ADOPTION
 - available locally now: scaffold-scene, scaffold-system, game-brief prompt, fabula prompt, gdd prompt, investigate prompt, mechanika-spec, story-bible, skill-creator, content-research-writer
-- staged intake area for future additions: .github/skills/incoming/
-- still gated until later: external MCP servers, app-only testing skills, CI/release skills that need a runnable app or workflows
+- staged locally in `.github/skills/incoming/`: changelog-generator, webapp-testing, gh-fix-ci, codebase-migrate, game-designer, gameplay-programmer, level-designer, game-artist
+- still gated until later: external MCP servers plus activation of app-only, CI/release, and design-pipeline skills

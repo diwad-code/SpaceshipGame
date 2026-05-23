@@ -13,6 +13,8 @@ This directory contains the repository-local skills that Copilot can use for Spa
 
 ## Intake flow for additional skills
 
+Currently staged from the recommendation set: `changelog-generator`, `webapp-testing`, `gh-fix-ci`, `codebase-migrate`, `game-designer`, `gameplay-programmer`, `level-designer`, and `game-artist`.
+
 1. Drop raw or draft material into `.github/skills/incoming/`.
    - If the raw source currently lives in `dodatki/skills/`, copy or adapt only the selected skill instead of treating the whole folder as active.
 2. Review whether it fits the repo rules, stack, and current gate.
