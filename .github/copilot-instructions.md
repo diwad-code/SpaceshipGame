@@ -101,9 +101,19 @@ For MVP, prioritize tests for:
 
 Do not block MVP on broad coverage targets.
 
+## Narrative and mechanics separation
+
+- Create and maintain story canon in `docs/FABULA.md` before final mechanics are locked.
+- Keep `docs/GAME_BRIEF.md` and `docs/GDD.md` aligned with the current story and scope.
+- Treat `mechanika/` as the place for gameplay rules, not for raw worldbuilding.
+
 ## Copilot workflow
 
 - Use `/game-dev` for project orchestration.
+- Use `/game-brief` for the durable product and mission brief.
+- Use `/fabula` for story bible work before mechanics solidify.
+- Use `/gdd` for structured design-document updates.
+- Use `/investigate` for focused repo analysis and blocker discovery.
 - Use `/new-scene` for Phaser scenes.
 - Use `/new-system` for systems.
 - Use `/new-event` for event data.

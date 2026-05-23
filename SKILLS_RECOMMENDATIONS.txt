@@ -43,16 +43,24 @@ B) ADAPT FROM diwad-code/bmad-module-game-dev-studio NOW
    - establishes a durable product/vision reference before implementation expands
    - gives every later mechanic and narrative decision a common anchor
 
-2) gdd package
+2) fabula package
    Target form:
-   - .github/prompts/gdd.prompt.md
-   - docs/GDD.md
-   - optionally docs/EPICS.md
+    - .github/prompts/fabula.prompt.md
+    - docs/FABULA.md
    Why it belongs:
-   - turns the repo from idea notes into a structured design system
-   - supports mechanics, event logic, UX, and production sequencing
+    - story and worldbuilding need a durable home before mechanics lock in
+    - gives AI-assisted writing a safe place to work without inventing gameplay rules
 
-3) mechanika-spec
+3) gdd package
+   Target form:
+    - .github/prompts/gdd.prompt.md
+    - docs/GDD.md
+    - optionally docs/EPICS.md
+   Why it belongs:
+    - turns the repo from idea notes into a structured design system
+    - supports mechanics, event logic, UX, and production sequencing
+
+4) mechanika-spec
    Target form:
    - .github/skills/mechanika-spec/SKILL.md
    Why it belongs:
@@ -60,7 +68,7 @@ B) ADAPT FROM diwad-code/bmad-module-game-dev-studio NOW
    - best tactical tool for creating/refining one mechanic spec at a time
    - protects against random over-invention in pending mechanics areas
 
-4) architecture package
+5) architecture package
    Target form:
    - .github/prompts/architecture.prompt.md or equivalent
    - docs/ARCHITECTURE.md extensions
@@ -68,7 +76,7 @@ B) ADAPT FROM diwad-code/bmad-module-game-dev-studio NOW
    - we should not stop at brief + GDD; the repo also needs a deeper technical decision layer
    - useful before real Phaser/Vite/PWA scaffolding starts
 
-5) investigate package
+6) investigate package
    Target form:
    - .github/prompts/investigate.prompt.md or a lightweight skill
    Why it belongs:
@@ -213,8 +221,10 @@ PHASE 1 — DESIGN AND DESIGN-CONTEXT LAYER
 - keep scaffold-scene
 - keep scaffold-system
 - adapt game-brief package
+- adapt fabula package
 - adapt gdd package
 - adapt mechanika-spec
+- adapt story-bible support
 - adapt architecture package
 
 PHASE 2 — DOCUMENTATION / AUTHORING SUPPORT
@@ -246,8 +256,10 @@ PROJECT-SIDE / ADAPTED
 - scaffold-scene
 - scaffold-system
 - game-brief package
+- fabula package
 - gdd package
 - mechanika-spec
+- story-bible support
 - architecture package
 - investigate package
 
@@ -280,8 +292,14 @@ MCP SERVERS
 
 SHORT DECISION
 If we want a stronger non-minimum stack for this repo, the best direction is:
-1. Build the design layer first: game-brief, gdd, mechanika-spec, architecture.
+1. Build the design layer first: game-brief, fabula, gdd, mechanika-spec, architecture.
 2. Add authoring support next: skill-creator, content-research-writer, changelog-generator.
 3. Add Phaser- and UI-aligned MCPs next: Phaser MCP, Phaser Editor MCP Server, Figma MCP Server.
 4. Add testing/CI/PWA delivery support as soon as the app and workflows actually exist.
 5. Use docs/skills-adoption/README.md plus /skills-adoption as the autonomous adoption mechanism for executing this order.
+
+
+CURRENT LOCAL AVAILABILITY AFTER SPRINT 0 DOCS ADOPTION
+- available locally now: scaffold-scene, scaffold-system, game-brief prompt, fabula prompt, gdd prompt, investigate prompt, mechanika-spec, story-bible, skill-creator, content-research-writer
+- staged intake area for future additions: .github/skills/incoming/
+- still gated until later: external MCP servers, app-only testing skills, CI/release skills that need a runnable app or workflows

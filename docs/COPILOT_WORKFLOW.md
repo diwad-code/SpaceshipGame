@@ -1,6 +1,6 @@
 # Instrukcja korzystania z promptów Copilota
 
-English summary: the working custom slash commands are `/game-dev`, `/skills-adoption`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`. Start with `/game-dev`. The detailed guide below is in Polish.
+English summary: the working custom slash commands are `/game-dev`, `/game-brief`, `/fabula`, `/gdd`, `/skills-adoption`, `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`. Start with `/game-dev`, then lock the brief and story before mechanics-heavy implementation. The detailed guide below is in Polish.
 
 Ten dokument jest prostą instrukcją pracy w VS Code z przygotowanymi promptami projektu SpaceshipGame. Traktuj go jak kolejność rozmowy z Copilotem.
 
@@ -10,12 +10,18 @@ Najpierw używaj promptu **`/game-dev`**. To główny przełącznik projektu. On
 
 Nie zaczynaj od `/new-scene` albo `/new-system`, jeśli nie masz jeszcze gotowego projektu Vite/Phaser i podstawowych folderów.
 
+W obecnym Sprint 0 przed mechaniką najpierw porządkuj: **brief → fabułę → GDD → adoption skills**.
+
 ## Co oznaczają nasze przełączniki
 
 | Prompt | Kiedy używać | Co robi |
 |---|---|---|
 | `/game-dev` | Zawsze na początku sesji albo gdy nie wiesz, co dalej | Sprawdza projekt, dokumenty, braki i proponuje następne kroki |
+| `/game-brief` | Gdy chcesz ustabilizować wizję projektu | Tworzy lub aktualizuje `docs/GAME_BRIEF.md` bez wchodzenia w szczegółowe mechaniki |
+| `/fabula` | Gdy tworzysz historię przed mechaniką | Buduje `docs/FABULA.md`: premisę, ton, świat i haki narracyjne |
+| `/gdd` | Gdy chcesz utrzymać główny design doc | Aktualizuje `docs/GDD.md` i oznacza sekcje jako approved/reserved/open question |
 | `/skills-adoption` | Gdy chcesz wdrożyć zatwierdzony zestaw skills/MCP | Czyta `SKILLS_RECOMMENDATIONS.txt` i `docs/skills-adoption/README.md`, wykonuje odblokowane kroki i raportuje blokery |
+| `/investigate` | Gdy najpierw trzeba coś sprawdzić | Robi ukierunkowany research repozytorium, konfliktów i blokerów |
 | `/new-scene` | Gdy potrzebujesz nowego ekranu/sceny gry | Tworzy lub planuje scenę Phaser 4, np. `BootScene`, `BridgeScene` |
 | `/new-system` | Gdy potrzebujesz nowego modułu logiki gry | Tworzy system TypeScript, np. `CrewSystem`, `ResourceSystem` |
 | `/new-event` | Gdy chcesz dodać losowe zdarzenie do gry | Tworzy event data-driven z wyborami i ważonymi wynikami |
@@ -106,6 +112,24 @@ Do czasu dostarczenia `mechanika/` eventy mają być proste: zasoby, proste uszk
 
 Cel: Copilot ma przypomnieć sobie dokumentację i sprawdzić, czego brakuje.
 
+### Etap 0.25 — brief i fabuła przed mechaniką
+
+Zanim zaczniesz uszczegóławiać mechanikę, ustaw fundament narracyjny:
+
+```text
+/game-brief uporządkuj krótki brief projektu i misji
+```
+
+```text
+/fabula przygotuj bazę fabularną, ton i haki narracyjne do docs/FABULA.md
+```
+
+```text
+/gdd zsynchronizuj brief, fabułę i aktualny scope
+```
+
+Cel: repo ma mieć osobne miejsce na wizję produktu, fabułę i design doc zanim zacznie powstawać kod i finalna mechanika.
+
 ### Etap 0.5 — research i wdrażanie skills/MCP
 
 Gdy chcesz wykonać zatwierdzony rollout skills/MCP:
@@ -114,7 +138,7 @@ Gdy chcesz wykonać zatwierdzony rollout skills/MCP:
 /skills-adoption wykonaj odblokowane kroki z listy rekomendacji
 ```
 
-Cel: Copilot ma przejść przez listę, wykonać tylko kroki zgodne z aktualnym stanem repozytorium i zapisać blokery dla etapów wymagających aplikacji, CI albo zewnętrznych usług.
+Cel: Copilot ma przejść przez listę, wykonać tylko kroki zgodne z aktualnym stanem repozytorium i zapisać blokery dla etapów wymagających aplikacji, CI albo zewnętrznych usług. Dodatkowe drafty skills wrzucaj najpierw do `.github/skills/incoming/`.
 
 ### Etap 1 — przygotowanie projektu technicznego
 

@@ -148,8 +148,10 @@ These are additions to the previous target set, grouped by adoption value.
 - Existing `scaffold-scene` skill.
 - Existing `scaffold-system` skill.
 - BMad-adapted `game-brief` package.
+- BMad-adapted `fabula` package for story-first work.
 - BMad-adapted `gdd` package.
 - BMad-adapted `mechanika-spec` skill.
+- BMad-adapted `story-bible` skill.
 - BMad-adapted `architecture` package.
 - `skill-creator` / `agent-skill-creator` pattern.
 - `content-research-writer` or equivalent documentation authoring skill.
@@ -200,12 +202,14 @@ These are additions to the previous target set, grouped by adoption value.
    - Art/design pipeline gate.
 3. **Execute unblocked docs/design work first**:
    - create or update game brief prompt/docs,
+   - create or update fabula prompt/docs,
    - create or update GDD prompt/docs,
-   - create or update mechanika-spec skill,
+   - create or update mechanika-spec and story-bible skills,
    - create or update architecture/investigate prompts,
    - keep README/docs indexes current.
 4. **Prepare skills before MCP installs**:
    - create local skills from selected patterns,
+   - stage raw or draft imports in `.github/skills/incoming/`,
    - document source, purpose, acceptance criteria, and activation gate,
    - avoid bulk imports.
 5. **Only then configure MCPs**:
