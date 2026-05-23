@@ -31,6 +31,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/ADRs/ADR-001-stack.md` — stack decision record.
 - `SKILLS_RECOMMENDATIONS.txt` — curated good-plus set of recommended skills and MCP servers for the repo.
 - `docs/skills-adoption/README.md` — expanded research and adoption order for skills/MCP rollout.
+- `.github/skills/incoming/` — staged recommended skills that are not active yet because they still depend on app, CI, or design-pipeline gates.
 - `dodatki/research/` — creative scientific research pack and prompt flow for later mechanika work.
 - `dodatki/skills/` — raw external skill library to review before adapting items into `.github/skills/incoming/`.
 - `.github/prompts/skills-adoption.prompt.md` — autonomous prompt for executing the skills/MCP adoption plan.
@@ -41,7 +42,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 
 Ta część ma być aktualizowana na bieżąco, tak aby kolejna osoba mogła przejąć projekt bez wcześniejszego kontekstu.
 
-Aktualnie projekt jest w Sprint 0: porządkowana jest dokumentacja, workflow Copilota i materiały wejściowe. Nie ma jeszcze `package.json`, katalogu `src/` ani uruchamialnej wersji gry.
+Aktualnie projekt jest w Sprint 0: porządkowana jest dokumentacja, workflow Copilota i materiały wejściowe. Nie ma jeszcze `package.json`, katalogu `src/` ani uruchamialnej wersji gry. Zestaw rekomendowanych skillów został już rozdzielony na aktywne lokalne skille i staged intake w `.github/skills/incoming/`, żeby przed dalszą pracą nad fabułą było jasne, co jest gotowe teraz, a co czeka na kolejne bramki.
 
 Najbliższe kroki:
 
@@ -58,7 +59,7 @@ Najbliższe kroki:
    - `/gdd` — utrzymanie dokumentu projektowego w zgodzie z briefem i fabułą,
    - `/skills-adoption` — wdrażanie zatwierdzonych skillów i MCP z dokumentacji,
    - `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`.
-4. W Sprint 0 trzymaj kolejność pracy: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`.
+4. W Sprint 0 trzymaj kolejność pracy: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`. Skill packages wymagające aplikacji, CI albo pipeline'u art nadal zostają w `.github/skills/incoming/` do czasu odblokowania tych bramek.
 5. Nie wymyślaj jeszcze szczegółowych mechanik walki, traitów, morale, progresji, frakcji ani łańcuchów questów. Te reguły mają trafić do `mechanika/`, gdy zostaną zatwierdzone.
 6. Traktuj `dodatki/research/` i `dodatki/skills/` jako biblioteki wejściowe. Zatwierdzone wnioski przenoś do `docs/`, `mechanika/` albo `.github/skills/`.
 7. Dopiero po ustabilizowaniu dokumentacji i assetów `.github/` scaffolduj projekt Vite + Phaser 4.
