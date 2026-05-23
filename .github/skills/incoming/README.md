@@ -5,6 +5,7 @@ Use this directory as the staging area for additional skills before they become 
 ## What goes here
 
 - draft skills copied in for review,
+- selected skills copied or adapted from `dodatki/skills/`,
 - external skill references,
 - partially adapted skill packages,
 - notes about source, purpose, and gate.

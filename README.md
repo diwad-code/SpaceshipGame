@@ -4,7 +4,7 @@ Retro pixel-art game about managing a spaceship mission searching for life. The 
 
 ## Current status
 
-Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `claude_tips/` folder is treated as reference material, not project source of truth. The `mechanika/` folder is reserved for the final gameplay mechanics specification and currently must not be invented around.
+Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `claude_tips/`, `dodatki/research/`, and `dodatki/skills/` folders are treated as reference material, not project source of truth. The `mechanika/` folder is reserved for the final gameplay mechanics specification and currently must not be invented around.
 
 ## Approved stack
 
@@ -21,6 +21,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 ## Documentation
 
 - `docs/ARCHITECTURE.md` — approved architecture and integration points for future mechanics.
+- `docs/CREATIVE_INPUTS.md` — how to use the new creative research pack and external skill library in `dodatki/`.
 - `docs/GAME_BRIEF.md` — durable product and mission brief before implementation expands.
 - `docs/FABULA.md` — story bible and narrative canon kept separate from gameplay rules.
 - `docs/GDD.md` — structured design document linking brief, fabula, scope, and mechanika placeholders.
@@ -30,6 +31,8 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/ADRs/ADR-001-stack.md` — stack decision record.
 - `SKILLS_RECOMMENDATIONS.txt` — curated good-plus set of recommended skills and MCP servers for the repo.
 - `docs/skills-adoption/README.md` — expanded research and adoption order for skills/MCP rollout.
+- `dodatki/research/` — creative scientific research pack and prompt flow for later mechanika work.
+- `dodatki/skills/` — raw external skill library to review before adapting items into `.github/skills/incoming/`.
 - `.github/prompts/skills-adoption.prompt.md` — autonomous prompt for executing the skills/MCP adoption plan.
 - `.github/copilot-instructions.md` — always-on Copilot project rules.
 - `mechanika/00-template-do-wypelnienia.md` — form to fill in with final gameplay mechanics.
@@ -49,6 +52,7 @@ Use the project Copilot assets first, then scaffold the codebase:
 3. In Sprint 0, stabilize the docs flow in this order: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`.
 4. Only scaffold the Vite + Phaser project after the documentation and `.github/` assets are in place.
 5. Because this repository is still in Sprint 0, there is no `package.json`, no `src/`, and no runnable npm command yet.
+6. Treat `dodatki/research/` and `dodatki/skills/` as input libraries; move approved outcomes into `docs/`, `mechanika/`, or `.github/skills/`.
 
 ## If the slash commands do not appear
 

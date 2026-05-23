@@ -14,6 +14,7 @@ This directory contains the repository-local skills that Copilot can use for Spa
 ## Intake flow for additional skills
 
 1. Drop raw or draft material into `.github/skills/incoming/`.
+   - If the raw source currently lives in `dodatki/skills/`, copy or adapt only the selected skill instead of treating the whole folder as active.
 2. Review whether it fits the repo rules, stack, and current gate.
 3. Adapt it into a clean local skill package under `.github/skills/{skill-name}/`.
 4. Update `README.md`, `docs/COPILOT_WORKFLOW.md`, and adoption docs if the skill becomes part of the standard workflow.
@@ -22,4 +23,5 @@ This directory contains the repository-local skills that Copilot can use for Spa
 
 - Prefer adapted local skills over bulk imports.
 - Do not treat `incoming/` content as active by default.
+- Do not treat `dodatki/skills/` as active by default.
 - Record activation gates and blockers for every non-trivial skill.

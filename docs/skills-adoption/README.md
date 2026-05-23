@@ -17,6 +17,15 @@ Keep candidates only when they support at least one of these needs:
 
 Reject or defer candidates when they are primarily Unity, Unreal, Godot, Bevy, Minecraft server, native mobile, game-store automation, or unrelated SaaS automation unless the project later adopts that tool explicitly.
 
+## Current raw source library in this repo
+
+The repository now also contains `dodatki/skills/` as a raw external skill library and `dodatki/research/` as a creative research pack.
+
+- Treat both as reference-only inputs.
+- Do not treat `dodatki/skills/` as active local skills by default.
+- When a specific external skill is worth adopting, stage or adapt it through `.github/skills/incoming/` first.
+- Record why that skill fits SpaceshipGame and which project gate allows it.
+
 ## Additional sources checked
 
 ### MCP directories and marketplaces
