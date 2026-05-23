@@ -858,8 +858,3 @@ Flagi ustawiane przez eventy, używane jako warunki wejścia dla kolejnych:
 - 6 eventów FORCED (gwarantowane), 9 WEIGHTED (warunkowe)
 - Wzorzec JSON (Zod-compatible) gotowy do implementacji
 - System flag narracyjnych łączących eventy w spójne wątki
-
-**Następne pliki:**
-- `mechanika/05-ship-systems.md` — systemy statku (Hull, Lab, Comm, Sensors)
-- `mechanika/09-failure-and-game-over.md` — warunki końca gry
-- `mechanika/00-overview.md` — podsumowanie gry spójne z fabułą
