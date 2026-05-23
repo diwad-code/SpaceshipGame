@@ -59,7 +59,7 @@ Najbliższe kroki:
    - `/skills-adoption` — wdrażanie zatwierdzonych skillów i MCP z dokumentacji,
    - `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`.
 4. W Sprint 0 trzymaj kolejność pracy: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`.
-5. Nie wymyślaj jeszcze szczegółowych mechanik walki, traitów, morale, progresji, frakcji ani quest-chainów. Te reguły mają trafić do `mechanika/`, gdy zostaną zatwierdzone.
+5. Nie wymyślaj jeszcze szczegółowych mechanik walki, traitów, morale, progresji, frakcji ani łańcuchów questów. Te reguły mają trafić do `mechanika/`, gdy zostaną zatwierdzone.
 6. Traktuj `dodatki/research/` i `dodatki/skills/` jako biblioteki wejściowe. Zatwierdzone wnioski przenoś do `docs/`, `mechanika/` albo `.github/skills/`.
 7. Dopiero po ustabilizowaniu dokumentacji i assetów `.github/` scaffolduj projekt Vite + Phaser 4.
 8. Po każdej większej zmianie aktualizuj tę sekcję: wpisz aktualny stan, najbliższe kroki i blokery, które musi znać osoba kontynuująca pracę.
