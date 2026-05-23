@@ -656,8 +656,9 @@ Każde zakończenie ma tekst końcowy napisany w tonie logbooka kapitana.
 **Otwarte pytania:**
 - Patrz sekcja 11.
 
-**Następne pliki do wypełnienia:**
-- `mechanika/00-overview.md` — podsumowanie gry spójne z fabułą
-- `mechanika/04-crew.md` — parametry postaci zgodne z profilemi
-- `mechanika/07-events.md` — pierwsze 15 eventów MVP
-- `docs/GDD.md` — synchronizacja z briefem i fabułą
+**Pliki do utrzymywania w synchronizacji:**
+- `mechanika/00-overview.md` — skrót gry spójny z fabułą
+- `mechanika/04-crew.md` — profile postaci i ich parametry
+- `mechanika/07-events.md` — eventy korzystające z motywów fabularnych
+- `mechanika/09-failure-and-game-over.md` — zakończenia i konsekwencje śmierci
+- `docs/GDD.md` — plan implementacyjny i bieżący stan designu

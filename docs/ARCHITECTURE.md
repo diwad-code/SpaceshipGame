@@ -25,7 +25,7 @@ Claude proposals rejected or modified:
 - **Rejected:** "Phaser 3 only / no Phaser 4". The approved architecture stays on Phaser 4.
 - **Rejected:** `idb-keyval` as the main save abstraction. Dexie.js remains approved because schema versioning and migrations matter for long-running save files.
 - **Modified:** "No Capacitor ever" becomes "no Capacitor for MVP; consider only for native APIs post-MVP."
-- **Deferred:** Battle, traits, progression, combat beacon logic, quest logic, and morale formulas until `mechanika/` arrives.
+- **Deferred after mechanika v1.0:** battle implementation, full trait-effect expansion, combat/quest beacon logic, faction systems, and any rules explicitly marked open or post-MVP in `mechanika/`.
 
 ## Target project structure
 
@@ -116,13 +116,13 @@ When documents overlap, resolve conflicts in this order:
 
 | System | MVP responsibility | Notes |
 |---|---|---|
-| `ShipSystem` | Ship hull/status/system health | No combat damage formula until `mechanika/`. |
-| `CrewSystem` | Crew roster, assignments, health/morale clamps | Traits/progression are reserved fields only. |
-| `MissionSystem` | Active mission state, mission steps, completion | Final mission mechanics wait for `mechanika/`. |
-| `ResourceSystem` | Fuel, scrap, parts and resource deltas | Every resource needs an input and output. |
-| `EventSystem` | Weighted random event selection and choice resolution | Effects must stay simple until mechanics spec arrives. |
-| `LifeSearchSystem` | Search-for-life progress and discovery flags | Detailed discovery mechanics wait for `mechanika/`. |
-| `SaveSystem` | Dexie save/load/autosave/schema versioning | `localStorage` is not allowed for primary saves. |
+| `ShipSystem` | Ship hull/status/system health | Must cover the approved system list from `mechanika/05-ship-systems.md`; combat remains deferred. |
+| `CrewSystem` | Crew roster, assignments, health/morale/fatigue/radiation clamps | Implements torpor rotation, relation flags, and approved trait hooks from `mechanika/04-crew.md`. |
+| `MissionSystem` | Active mission state, mission steps, completion | Must support 14 approved missions, including multi-turn missions. |
+| `ResourceSystem` | Oxygen, water, food, fuel, parts, and system-driven deltas | Every resource needs an input, output, and shortage consequence. |
+| `EventSystem` | Weighted random event selection and choice resolution | Must support forced events, weighted events, blue options, and approved failure/death outcomes. |
+| `LifeSearchSystem` | LifeData, discovery progress, and ending flags | MVP covers the approved discovery scale and mission/event dependencies only. |
+| `SaveSystem` | Dexie save/load/autosave/schema versioning | Must preserve active run state plus logbook retention after permadeath. |
 
 ## Event model
 
@@ -148,21 +148,21 @@ Events should be data-driven and compatible with FTL-like "blue options":
 }
 ```
 
-Combat-related requirements and death/permadeath effects are reserved until `mechanika/` defines the exact rules.
+Combat remains reserved. Death, permadeath, and ending behavior should now follow `mechanika/09-failure-and-game-over.md`.
 
 ## Mechanics integration points
 
-The following are allowed as **stubs or type placeholders only** until the user provides the `mechanika/` folder:
+The following still require partial or deferred treatment even after `mechanika/` v1.0:
 
 | Integration point | Allowed now | Not allowed yet |
 |---|---|---|
 | `BattleScene` | Stub with TODO | Combat implementation |
 | `BattleSystem` | Stub with interface only | Damage formulas, enemy AI |
-| `TraitSystem` | `traits: string[]` field | Trait effects |
-| `ProgressionSystem` | `skills` fields | XP curves and level-up rules |
+| `TraitSystem` | Serializable trait identifiers and only approved effects | Broad trait-effect design beyond approved spec |
+| `ProgressionSystem` | Captain voices, crew micro-growth, discovery progression | Broad XP trees and level-up rules |
 | `BeaconType.combat` | Enum value as reserved | Combat encounters |
 | `BeaconType.quest` | Enum value as reserved | Quest chains |
-| Morale | Numeric field and clamp | Detailed morale events/formulas |
+| Morale | Numeric field, thresholds, and approved event hooks | Additional simulation outside `mechanika/` |
 
 ## Mermaid overview
 
@@ -183,7 +183,7 @@ graph TB
     Systems --> Storage
     PWA --> App
 
-    subgraph Future["Pending mechanika/"]
+    subgraph Future["Deferred / post-MVP mechanics"]
         Battle["BattleSystem / BattleScene"]
         Traits["TraitSystem"]
         Progression["ProgressionSystem"]
@@ -193,6 +193,6 @@ graph TB
     Systems -. integration points .-> Future
 ```
 
-## Narrative foundation before mechanics
+## Narrative foundation with mechanics locked
 
-Before detailed mechanics are finalized, the repository now keeps story canon in `docs/FABULA.md`, product intent in `docs/GAME_BRIEF.md`, and structured design state in `docs/GDD.md`. This keeps worldbuilding and content direction available to AI-assisted writing without forcing premature gameplay rules into `mechanika/`. Additional skill packages should be staged in `.github/skills/incoming/` before they become active local skills.
+Now that `mechanika/` is filled, the repository uses it as the gameplay source of truth, while `docs/FABULA.md` remains the canon source for story and `docs/GAME_BRIEF.md` keeps the product frame concise. `docs/GDD.md` should track implementation order, blockers, and scope decisions instead of duplicating full mechanics tables. Additional skill packages should still be staged in `.github/skills/incoming/` before they become active local skills.

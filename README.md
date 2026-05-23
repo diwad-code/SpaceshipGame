@@ -4,7 +4,7 @@ Retro pixel-art game about managing a spaceship mission searching for life. The 
 
 ## Current status
 
-Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `claude_tips/`, `dodatki/research/`, and `dodatki/skills/` folders are treated as reference material, not project source of truth. The `mechanika/` folder is reserved for the final gameplay mechanics specification and currently must not be invented around.
+Sprint 0 / preproduction. No production code has been scaffolded yet, but `mechanika/` now contains gameplay specification v1.0 plus the remaining implementation blockers and open questions. The `claude_tips/`, `dodatki/research/`, and `dodatki/skills/` folders are still treated as reference material, not project source of truth.
 
 ## Approved stack
 
@@ -24,7 +24,7 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `docs/CREATIVE_INPUTS.md` — how to use the new creative research pack and external skill library in `dodatki/`.
 - `docs/GAME_BRIEF.md` — durable product and mission brief before implementation expands.
 - `docs/FABULA.md` — story bible and narrative canon kept separate from gameplay rules.
-- `docs/GDD.md` — structured design document linking brief, fabula, scope, and mechanika placeholders.
+- `docs/GDD.md` — structured design document synchronized with the current brief, fabula, scope, and mechanika v1.0.
 - `docs/SCOPE.md` — what is and is not in the MVP.
 - `docs/IDEAS_LATER.md` — deferred ideas and scope-control list.
 - `docs/COPILOT_WORKFLOW.md` — natural-language guide for using `/game-dev`, `/game-brief`, `/fabula`, `/gdd`, and related prompts.
@@ -36,13 +36,15 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `dodatki/skills/` — raw external skill library to review before adapting items into `.github/skills/incoming/`.
 - `.github/prompts/skills-adoption.prompt.md` — autonomous prompt for executing the skills/MCP adoption plan.
 - `.github/copilot-instructions.md` — always-on Copilot project rules.
-- `mechanika/00-template-do-wypelnienia.md` — form to fill in with final gameplay mechanics.
+- `mechanika/README.md` — guide to the mechanics folder and its intended use.
+- `mechanika/00-overview.md` — one-file entry point to the current mechanics spec.
+- `mechanika/99-open-questions.md` — implementation blockers and unresolved design decisions.
 
 ## Co dalej?
 
 Ta część ma być aktualizowana na bieżąco, tak aby kolejna osoba mogła przejąć projekt bez wcześniejszego kontekstu.
 
-Aktualnie projekt jest w Sprint 0: porządkowana jest dokumentacja, workflow Copilota i materiały wejściowe. Nie ma jeszcze `package.json`, katalogu `src/` ani uruchamialnej wersji gry. Zestaw rekomendowanych skillów został już rozdzielony na aktywne lokalne skille i staged intake w `.github/skills/incoming/`, żeby przed dalszą pracą nad fabułą było jasne, co jest gotowe teraz, a co czeka na kolejne bramki.
+Aktualnie projekt nadal jest w Sprint 0: nie ma jeszcze `package.json`, katalogu `src/` ani uruchamialnej wersji gry. Zmieniło się jednak to, że `mechanika/` jest już wypełniona i stała się głównym źródłem prawdy dla gameplayu. Najbliższa praca to synchronizacja dokumentów, zamknięcie krytycznych pytań z `mechanika/99-open-questions.md`, a potem scaffold projektu Vite + Phaser 4 zgodnie z `docs/ARCHITECTURE.md`.
 
 Najbliższe kroki:
 
@@ -50,19 +52,21 @@ Najbliższe kroki:
 2. Przeczytaj najpierw:
    - `docs/GAME_BRIEF.md` — czym ma być gra,
    - `docs/FABULA.md` — aktualny kanon fabularny,
-   - `docs/GDD.md` — uporządkowany projekt gry,
+   - `docs/GDD.md` — aktualny plan implementacyjny i stan designu,
+   - `mechanika/00-overview.md` — skrót całej mechaniki v1.0,
+   - `mechanika/99-open-questions.md` — pytania blokujące start implementacji,
    - `docs/ARCHITECTURE.md` — zasady techniczne i miejsca przyszłej integracji.
 3. Używaj komend Copilota zgodnych z polem `name:` w plikach `.github/prompts/`:
    - `/game-dev` — sprawdzenie stanu repo i wybór kolejnych 1-3 kroków,
    - `/game-brief` — dopracowanie trwałego opisu projektu,
-   - `/fabula` — rozwijanie biblii fabularnej przed zamknięciem mechanik,
-   - `/gdd` — utrzymanie dokumentu projektowego w zgodzie z briefem i fabułą,
+   - `/fabula` — utrzymanie i dopracowanie biblii fabularnej,
+   - `/gdd` — utrzymanie dokumentu projektowego w zgodzie z briefem, fabułą i mechaniką,
    - `/skills-adoption` — wdrażanie zatwierdzonych skillów i MCP z dokumentacji,
    - `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`.
-4. W Sprint 0 trzymaj kolejność pracy: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`. Skill packages wymagające aplikacji, CI albo pipeline'u art nadal zostają w `.github/skills/incoming/` do czasu odblokowania tych bramek.
-5. Nie wymyślaj jeszcze szczegółowych mechanik walki, traitów, morale, progresji, frakcji ani łańcuchów questów. Te reguły mają trafić do `mechanika/`, gdy zostaną zatwierdzone.
+4. W obecnym etapie trzymaj kolejność pracy: `/game-dev` → `/gdd` → rozstrzygnięcie B1/B7 z `mechanika/99-open-questions.md` → scaffold projektu → `/skills-adoption` dla kroków zależnych od aplikacji lub CI.
+5. Nie dopisuj reguł sprzecznych z `mechanika/`. Jeśli jakaś część specyfikacji nadal jest otwarta, zapisz to w `mechanika/99-open-questions.md` albo w odpowiednim dokumencie, zamiast zgadywać.
 6. Traktuj `dodatki/research/` i `dodatki/skills/` jako biblioteki wejściowe. Zatwierdzone wnioski przenoś do `docs/`, `mechanika/` albo `.github/skills/`.
-7. Dopiero po ustabilizowaniu dokumentacji i assetów `.github/` scaffolduj projekt Vite + Phaser 4.
+7. Przed scaffoldowaniem kodu dopnij synchronizację `README.md`, `docs/GDD.md`, `docs/SCOPE.md`, `docs/ARCHITECTURE.md` i workflow Copilota z gotową mechaniką.
 8. Po każdej większej zmianie aktualizuj tę sekcję: wpisz aktualny stan, najbliższe kroki i blokery, które musi znać osoba kontynuująca pracę.
 
 ## If the slash commands do not appear

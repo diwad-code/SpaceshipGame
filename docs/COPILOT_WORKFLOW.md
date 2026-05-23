@@ -1,6 +1,6 @@
 # Instrukcja korzystania z promptów Copilota
 
-English summary: the working custom slash commands are `/game-dev`, `/game-brief`, `/fabula`, `/gdd`, `/skills-adoption`, `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`. Start with `/game-dev`, then lock the brief and story before mechanics-heavy implementation. The detailed guide below is in Polish.
+English summary: the working custom slash commands are `/game-dev`, `/game-brief`, `/fabula`, `/gdd`, `/skills-adoption`, `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`. Start with `/game-dev`, sync docs against `mechanika/`, then scaffold and implement in small steps. The detailed guide below is in Polish.
 
 Ten dokument jest prostą instrukcją pracy w VS Code z przygotowanymi promptami projektu SpaceshipGame. Traktuj go jak kolejność rozmowy z Copilotem.
 
@@ -10,7 +10,7 @@ Najpierw używaj promptu **`/game-dev`**. To główny przełącznik projektu. On
 
 Nie zaczynaj od `/new-scene` albo `/new-system`, jeśli nie masz jeszcze gotowego projektu Vite/Phaser i podstawowych folderów.
 
-W obecnym Sprint 0 przed mechaniką najpierw porządkuj: **brief → fabułę → GDD → adoption skills**.
+W obecnym etapie po domknięciu `mechanika/` najpierw porządkuj: **game-dev → synchronizacja GDD/scope → decyzje blokujące → scaffold projektu**.
 
 ## Materiały kreatywne poza source of truth
 
@@ -25,8 +25,8 @@ W obecnym Sprint 0 przed mechaniką najpierw porządkuj: **brief → fabułę �
 |---|---|---|
 | `/game-dev` | Zawsze na początku sesji albo gdy nie wiesz, co dalej | Sprawdza projekt, dokumenty, braki i proponuje następne kroki |
 | `/game-brief` | Gdy chcesz ustabilizować wizję projektu | Tworzy lub aktualizuje `docs/GAME_BRIEF.md` bez wchodzenia w szczegółowe mechaniki |
-| `/fabula` | Gdy tworzysz historię przed mechaniką | Buduje `docs/FABULA.md`: premisę, ton, świat i haki narracyjne |
-| `/gdd` | Gdy chcesz utrzymać główny design doc | Aktualizuje `docs/GDD.md` i oznacza sekcje jako approved/reserved/open question |
+| `/fabula` | Gdy zmienia się kanon albo trzeba dopisać brakującą warstwę narracyjną | Aktualizuje `docs/FABULA.md` bez przepisywania mechaniki |
+| `/gdd` | Gdy chcesz utrzymać główny design doc i plan wdrożenia | Synchronizuje `docs/GDD.md` z briefem, fabułą, scope i `mechanika/` |
 | `/skills-adoption` | Gdy chcesz wdrożyć zatwierdzony zestaw skills/MCP | Czyta `SKILLS_RECOMMENDATIONS.txt` i `docs/skills-adoption/README.md`, wykonuje odblokowane kroki i raportuje blokery |
 | `/investigate` | Gdy najpierw trzeba coś sprawdzić | Robi ukierunkowany research repozytorium, konfliktów i blokerów |
 | `/new-scene` | Gdy potrzebujesz nowego ekranu/sceny gry | Tworzy lub planuje scenę Phaser 4, np. `BootScene`, `BridgeScene` |
@@ -91,23 +91,23 @@ Wtedy najpierw użyj:
 
 ### Nie używaj `/new-system`, jeśli:
 
-- system dotyczy walki, traits, progresji, morale albo questów,
-- folder `mechanika/` nie zawiera jeszcze gotowej specyfikacji tych mechanik.
+- system dotyczy walki, frakcji albo quest-chain poza MVP,
+- chcesz dopisać reguły niezatwierdzone jeszcze w `mechanika/99-open-questions.md`.
 
 Wtedy poproś tylko o stub:
 
 ```text
-/new-system Battle — tylko stub, mechanika będzie później w folderze mechanika
+/new-system Battle — tylko stub, walka będzie doprecyzowana osobno
 ```
 
 ### Nie używaj `/new-event`, jeśli:
 
 - event wymaga dokładnych reguł walki,
-- event wymaga śmierci załogi,
-- event wymaga XP/progresji,
-- event wymaga frakcji albo quest-chain.
+- event wymaga frakcji albo quest-chain,
+- event opiera się na parametrze, który nadal jest otwartym pytaniem w `mechanika/99-open-questions.md`,
+- chcesz dopisać nową klasę eventu zamiast zaimplementować zatwierdzone eventy z `mechanika/07-events.md`.
 
-Do czasu dostarczenia `mechanika/` eventy mają być proste: zasoby, proste uszkodzenia, prosta zmiana zdrowia/morale, postęp misji.
+Eventy implementuj zgodnie z `mechanika/07-events.md`. Jeśli brakuje decyzji albo parametr zależy od otwartego pytania, zatrzymaj się na danych/stubie zamiast wymyślać nową regułę.
 
 ## Harmonogram kolejnych promptów
 
@@ -119,9 +119,9 @@ Do czasu dostarczenia `mechanika/` eventy mają być proste: zasoby, proste uszk
 
 Cel: Copilot ma przypomnieć sobie dokumentację i sprawdzić, czego brakuje.
 
-### Etap 0.25 — brief i fabuła przed mechaniką
+### Etap 0.25 — synchronizacja po mechanice
 
-Zanim zaczniesz uszczegóławiać mechanikę, ustaw fundament narracyjny:
+Zanim zaczniesz scaffoldować kod, zsynchronizuj dokumenty z gotową mechaniką:
 
 Jeśli potrzebujesz materiału wejściowego do tej fazy, najpierw przejrzyj:
 
@@ -130,18 +130,24 @@ Jeśli potrzebujesz materiału wejściowego do tej fazy, najpierw przejrzyj:
 - `docs/CREATIVE_INPUTS.md`
 
 ```text
-/game-brief uporządkuj krótki brief projektu i misji
+/gdd zsynchronizuj brief, fabułę, scope i aktualną mechanikę
 ```
 
 ```text
-/fabula przygotuj bazę fabularną, ton i haki narracyjne do docs/FABULA.md
+/investigate wypisz krytyczne blokery implementacji z mechanika/99-open-questions.md
+```
+
+Jeśli w trakcie wyjdzie rozjazd:
+
+```text
+/game-brief uporządkuj brief zgodnie z aktualną mechaniką
 ```
 
 ```text
-/gdd zsynchronizuj brief, fabułę i aktualny scope
+/fabula popraw tylko sekcje kanoniczne które rozjechały się z mechaniką
 ```
 
-Cel: repo ma mieć osobne miejsce na wizję produktu, fabułę i design doc zanim zacznie powstawać kod i finalna mechanika.
+Cel: repo ma mieć spójny brief, fabułę, GDD i scope zanim zacznie powstawać kod.
 
 ### Etap 0.5 — research i wdrażanie skills/MCP
 
@@ -181,6 +187,10 @@ Najpierw dane, potem logika:
 
 ```text
 /data-schema ship-systems
+```
+
+```text
+/data-schema missions
 ```
 
 ```text
@@ -225,10 +235,10 @@ Twórz sceny w tej kolejności:
 /new-scene Crew
 ```
 
-Nie implementuj jeszcze `BattleScene`, chyba że jako stub:
+Na starcie `BattleScene` zostaje stubem:
 
 ```text
-/new-scene Battle — tylko stub z TODO pending mechanika
+/new-scene Battle — tylko stub do czasu osobnej decyzji o walce
 ```
 
 ### Etap 4 — systemy gry
@@ -263,18 +273,18 @@ Twórz systemy w tej kolejności:
 /new-system LifeSearch
 ```
 
-Systemy zależne od przyszłej mechaniki tylko jako stub:
+Systemy nadal odroczone albo częściowo ograniczone:
 
 ```text
 /new-system Battle — tylko stub, bez mechaniki walki
 ```
 
 ```text
-/new-system Trait — tylko stub, bez efektów traits
+/new-system Trait — tylko approved hooks, bez pełnego systemu efektów
 ```
 
 ```text
-/new-system Progression — tylko stub, bez XP curves
+/new-system Progression — tylko zatwierdzona progresja z mechanika, bez szerokich XP curves
 ```
 
 ### Etap 5 — pierwsze eventy
@@ -330,32 +340,32 @@ Jeśli Copilot znajdzie coś poważnego, napraw tylko to, a potem ponów:
 ## Proponowana kolejność pierwszych 20 promptów
 
 1. `/game-dev sprawdź stan projektu i podaj następne kroki`
-2. `/game-dev przygotuj projekt Vite + TypeScript + Phaser 4`
-3. `/code-review sprawdź setup projektu`
-4. `/data-schema resources`
-5. `/data-schema crew`
-6. `/data-schema ship-systems`
-7. `/data-schema events`
-8. `/new-scene Boot`
-9. `/new-scene Preload`
-10. `/new-scene MainMenu`
-11. `/new-scene Bridge`
-12. `/new-system Resource`
-13. `/new-system Save`
-14. `/new-system Event`
-15. `/new-scene Map`
-16. `/new-scene Event`
-17. `/new-event drobna awaria napędu`
-18. `/new-event opuszczona sonda badawcza`
-19. `/pwa-check sprawdź gotowość PWA`
-20. `/code-review sprawdź całość po pierwszym działającym loopie`
+2. `/gdd zsynchronizuj docs z mechanika v1.0`
+3. `/investigate wypisz blokery z mechanika/99-open-questions.md`
+4. `/game-dev przygotuj projekt Vite + TypeScript + Phaser 4`
+5. `/code-review sprawdź setup projektu`
+6. `/data-schema resources`
+7. `/data-schema crew`
+8. `/data-schema ship-systems`
+9. `/data-schema missions`
+10. `/data-schema events`
+11. `/new-scene Boot`
+12. `/new-scene Preload`
+13. `/new-scene MainMenu`
+14. `/new-scene Bridge`
+15. `/new-scene Systems`
+16. `/new-scene Torpor`
+17. `/new-system Resource`
+18. `/new-system Save`
+19. `/new-system Mission`
+20. `/code-review sprawdź pierwszy działający szkielet loopa`
 
 ## Jak pracować, żeby nie zgubić projektu
 
 - Jedna rozmowa = jeden mały cel.
 - Jeśli Copilot proponuje dużą przebudowę, poproś: "podziel to na małe kroki".
 - Jeśli Copilot chce dodać bibliotekę, poproś: "najpierw ADR".
-- Jeśli Copilot zaczyna wymyślać mechanikę walki/progresji, zatrzymaj go i przypomnij: "to czeka na folder mechanika".
+- Jeśli Copilot zaczyna zmieniać zatwierdzoną mechanikę bez decyzji projektowej, zatrzymaj go i przypomnij: "trzymaj się mechanika/ albo dopisz open question".
 - Jeśli coś nie działa, użyj `/code-review` albo poproś `/game-dev` o diagnozę następnego kroku.
 
 ## Krótka ściąga
