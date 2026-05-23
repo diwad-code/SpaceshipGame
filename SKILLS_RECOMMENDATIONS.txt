@@ -43,14 +43,22 @@ B) ADAPT FROM diwad-code/bmad-module-game-dev-studio NOW
    - establishes a durable product/vision reference before implementation expands
    - gives every later mechanic and narrative decision a common anchor
 
-2) gdd package
+2) fabula package
    Target form:
-   - .github/prompts/gdd.prompt.md
-   - docs/GDD.md
-   - optionally docs/EPICS.md
+    - .github/prompts/fabula.prompt.md
+    - docs/FABULA.md
    Why it belongs:
-   - turns the repo from idea notes into a structured design system
-   - supports mechanics, event logic, UX, and production sequencing
+    - story and worldbuilding need a durable home before mechanics lock in
+    - gives AI-assisted writing a safe place to work without inventing gameplay rules
+
+3) gdd package
+   Target form:
+    - .github/prompts/gdd.prompt.md
+    - docs/GDD.md
+    - optionally docs/EPICS.md
+   Why it belongs:
+    - turns the repo from idea notes into a structured design system
+    - supports mechanics, event logic, UX, and production sequencing
 
 4) mechanika-spec
    Target form:
