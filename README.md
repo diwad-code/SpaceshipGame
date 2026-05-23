@@ -37,22 +37,32 @@ Pre-initialization / Sprint 0. No production code has been scaffolded yet. The `
 - `.github/copilot-instructions.md` — always-on Copilot project rules.
 - `mechanika/00-template-do-wypelnienia.md` — form to fill in with final gameplay mechanics.
 
-## Next step
+## Co dalej?
 
-Use the project Copilot assets first, then scaffold the codebase:
+Ta część ma być aktualizowana na bieżąco, tak aby kolejna osoba mogła przejąć projekt bez wcześniejszego kontekstu.
 
-1. Open this folder in VS Code with GitHub Copilot Chat enabled.
-2. Use the custom prompt slash commands that match each prompt file `name:` field:
-   - `/game-dev` — check repo state and ask for the next 1-3 steps
-   - `/game-brief` — create or refine the durable project brief
-   - `/fabula` — build the story bible before mechanics solidify
-   - `/gdd` — keep the structured design document in sync
-   - `/skills-adoption` — execute the approved skills/MCP rollout from the research docs
-   - `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`
-3. In Sprint 0, stabilize the docs flow in this order: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`.
-4. Only scaffold the Vite + Phaser project after the documentation and `.github/` assets are in place.
-5. Because this repository is still in Sprint 0, there is no `package.json`, no `src/`, and no runnable npm command yet.
-6. Treat `dodatki/research/` and `dodatki/skills/` as input libraries; move approved outcomes into `docs/`, `mechanika/`, or `.github/skills/`.
+Aktualnie projekt jest w Sprint 0: porządkowana jest dokumentacja, workflow Copilota i materiały wejściowe. Nie ma jeszcze `package.json`, katalogu `src/` ani uruchamialnej wersji gry.
+
+Najbliższe kroki:
+
+1. Otwórz repozytorium w VS Code z włączonym GitHub Copilot Chat.
+2. Przeczytaj najpierw:
+   - `docs/GAME_BRIEF.md` — czym ma być gra,
+   - `docs/FABULA.md` — aktualny kanon fabularny,
+   - `docs/GDD.md` — uporządkowany projekt gry,
+   - `docs/ARCHITECTURE.md` — zasady techniczne i miejsca przyszłej integracji.
+3. Używaj komend Copilota zgodnych z polem `name:` w plikach `.github/prompts/`:
+   - `/game-dev` — sprawdzenie stanu repo i wybór kolejnych 1-3 kroków,
+   - `/game-brief` — dopracowanie trwałego opisu projektu,
+   - `/fabula` — rozwijanie biblii fabularnej przed zamknięciem mechanik,
+   - `/gdd` — utrzymanie dokumentu projektowego w zgodzie z briefem i fabułą,
+   - `/skills-adoption` — wdrażanie zatwierdzonych skillów i MCP z dokumentacji,
+   - `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, `/code-review`.
+4. W Sprint 0 trzymaj kolejność pracy: `/game-dev` → `/game-brief` → `/fabula` → `/gdd` → `/skills-adoption`.
+5. Nie wymyślaj jeszcze szczegółowych mechanik walki, traitów, morale, progresji, frakcji ani łańcuchów questów. Te reguły mają trafić do `mechanika/`, gdy zostaną zatwierdzone.
+6. Traktuj `dodatki/research/` i `dodatki/skills/` jako biblioteki wejściowe. Zatwierdzone wnioski przenoś do `docs/`, `mechanika/` albo `.github/skills/`.
+7. Dopiero po ustabilizowaniu dokumentacji i assetów `.github/` scaffolduj projekt Vite + Phaser 4.
+8. Po każdej większej zmianie aktualizuj tę sekcję: wpisz aktualny stan, najbliższe kroki i blokery, które musi znać osoba kontynuująca pracę.
 
 ## If the slash commands do not appear
 
