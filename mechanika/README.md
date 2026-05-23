@@ -2,7 +2,7 @@
 
 English summary: start with `00-template-do-wypelnienia.md`, then move refined sections into the numbered files in this folder. The detailed guide below is in Polish.
 
-Ten folder jest miejscem na Twoją specyfikację mechaniki gry. To ona będzie później podstawą dla implementacji systemów takich jak `CrewSystem`, `MissionSystem`, `EventSystem`, `BattleSystem`, `TraitSystem` i `ProgressionSystem`.
+Ten folder jest miejscem na Twoją specyfikację mechaniki gry. To ona będzie później podstawą dla implementacji systemów takich jak `CrewSystem`, `MissionSystem`, `EventSystem`, `BattleSystem`, `TraitSystem` i `ProgressionSystem`. Fabuła, ton i kanon narracyjny mają teraz osobny dom w `docs/FABULA.md`.
 
 ## Jak pracować
 

@@ -40,6 +40,10 @@ SpaceshipGame/
 │   ├── prompts/
 │   │   ├── game-dev.prompt.md
 │   │   ├── skills-adoption.prompt.md
+│   │   ├── game-brief.prompt.md
+│   │   ├── fabula.prompt.md
+│   │   ├── gdd.prompt.md
+│   │   ├── investigate.prompt.md
 │   │   ├── new-scene.prompt.md
 │   │   ├── new-system.prompt.md
 │   │   ├── new-event.prompt.md
@@ -54,8 +58,19 @@ SpaceshipGame/
 │   └── skills/
 │       ├── scaffold-scene/
 │       │   └── SKILL.md
-│       └── scaffold-system/
-│           └── SKILL.md
+│       ├── scaffold-system/
+│       │   └── SKILL.md
+│       ├── mechanika-spec/
+│       │   └── SKILL.md
+│       ├── story-bible/
+│       │   └── SKILL.md
+│       ├── skill-creator/
+│       │   └── SKILL.md
+│       ├── content-research-writer/
+│       │   └── SKILL.md
+│       ├── incoming/
+│       │   └── README.md
+│       └── README.md
 ├── public/
 │   ├── manifest.json
 │   └── assets/
@@ -76,22 +91,26 @@ SpaceshipGame/
 │   ├── types/
 │   └── utils/
 ├── docs/
+│   ├── GAME_BRIEF.md
+│   ├── FABULA.md
+│   └── GDD.md
 ├── mechanika/
 └── claude_tips/
 ```
 
 ## Source of truth order
 
-Custom Copilot slash commands come from each prompt file `name:` field, so the active commands are `/game-dev`, `/skills-adoption`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`.
+Custom Copilot slash commands come from each prompt file `name:` field, so the active commands are `/game-dev`, `/game-brief`, `/fabula`, `/gdd`, `/skills-adoption`, `/investigate`, `/new-scene`, `/new-system`, `/new-event`, `/data-schema`, `/pwa-check`, `/mobile-ux`, and `/code-review`.
 
 When documents overlap, resolve conflicts in this order:
 
 1. `mechanika/` for final gameplay mechanics.
-2. `docs/SCOPE.md` for MVP boundaries and post-MVP exclusions.
-3. `docs/ADRs/` for accepted technical decisions.
-4. `docs/ARCHITECTURE.md` for project structure and system boundaries.
-5. `.github/copilot-instructions.md` for day-to-day Copilot behavior.
-6. `claude_tips/` as reference material only; it is not authoritative.
+2. `docs/FABULA.md` for narrative canon and story direction.
+3. `docs/SCOPE.md` for MVP boundaries and post-MVP exclusions.
+4. `docs/ADRs/` for accepted technical decisions.
+5. `docs/ARCHITECTURE.md` for project structure and system boundaries.
+6. `.github/copilot-instructions.md` for day-to-day Copilot behavior.
+7. `claude_tips/` as reference material only; it is not authoritative.
 
 ## Core systems
 
@@ -173,3 +192,7 @@ graph TB
 
     Systems -. integration points .-> Future
 ```
+
+## Narrative foundation before mechanics
+
+Before detailed mechanics are finalized, the repository now keeps story canon in `docs/FABULA.md`, product intent in `docs/GAME_BRIEF.md`, and structured design state in `docs/GDD.md`. This keeps worldbuilding and content direction available to AI-assisted writing without forcing premature gameplay rules into `mechanika/`. Additional skill packages should be staged in `.github/skills/incoming/` before they become active local skills.

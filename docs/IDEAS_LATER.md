@@ -12,7 +12,7 @@ Anything here is explicitly outside the MVP unless moved into `docs/SCOPE.md` by
 - [ ] Factions and diplomacy.
 - [ ] Multiple starting ships.
 - [ ] 50+ events after the MVP proves the loop.
-- [ ] Main story arc.
+- [ ] Expanded multi-act story arc after the baseline canon is established in `docs/FABULA.md`.
 
 ## Technology
 
