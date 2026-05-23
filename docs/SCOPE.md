@@ -2,51 +2,56 @@
 
 ## In the MVP
 
-The MVP must prove the core management loop without waiting for final mechanics:
+The MVP now targets the first playable implementation of the approved `mechanika/` v1.0:
 
 - Browser-first Phaser 4 app with TypeScript and Vite.
 - PWA installable on Android.
-- Pixel-art presentation with placeholder assets.
-- Bridge/main management screen.
-- Basic sector/map screen with beacons.
-- Event screen with weighted choices.
-- Crew roster with role, skills, health, morale, and reserved traits.
-- Resource management for:
-  - `fuel`
-  - `scrap`
-  - `parts`
-- Save/load/autosave through IndexedDB + Dexie.
-- At least 15 simple events.
-- Basic "search for life" progress flag or track, without final discovery mechanics.
+- Pixel-art presentation with placeholder art where needed.
+- Scene flow covering:
+  - `BootScene`
+  - `PreloadScene`
+  - `MainMenuScene`
+  - `BridgeScene`
+  - `EventScene`
+  - `CrewScene`
+  - `SystemsScene`
+  - `TorporScene`
+  - `MapScene`
+  - `LogbookScene`
+  - `ApproachScene`
+  - `EndingScene`
+  - `GameOverScene`
+- Crew roster for 7 characters plus ARIA context.
+- Crew state: health, morale, fatigue, radiation, torpor rotation, and relations.
+- Ship/system state for 13 systems including ECLSS dependencies.
+- Resource model for `oxygen`, `water`, `food`, `fuel`, and `parts`.
+- Mission model for 14 MVP missions and the LifeData track.
+- Event model for 15 MVP events with forced/weighted structure and blue options.
+- Save/load/autosave through IndexedDB + Dexie with logbook retention after permadeath.
+- Narrative endings and hard game-over conditions defined in `mechanika/09-failure-and-game-over.md`.
 
 ## Not in the MVP
 
-- Battle implementation.
-- Turn-based combat.
-- Trait effects.
-- Crew XP/progression curves.
-- Complex morale simulation.
-- Quest chains.
-- Factions.
+- Battle implementation beyond stub.
+- Faction systems.
+- Quest chains / quest beacons.
+- Full trait-effect simulation beyond approved hooks.
+- Broad XP trees and post-MVP progression systems.
+- Life-discovery levels 4–6.
 - Multiple starting ships.
 - iOS support.
 - Capacitor app shell.
 - Full Playwright E2E suite.
 - Final art polish.
 
-## Reserved until `mechanika/`
+## Open implementation blockers
 
-Do not invent detailed rules for:
+These are already identified and must be resolved or explicitly deferred before coding the affected systems:
 
-- combat,
-- injuries/death beyond simple health changes,
-- morale formulas,
-- skill progression,
-- quest logic,
-- faction logic,
-- life discovery scoring.
-
-These must be integrated only after the user provides the `mechanika/` folder contents.
+- Radiation baseline decision (`B1`)
+- Captain torpor rule (`B7`)
+- Language/i18n direction (`A3`, `D2`)
+- Mission/event collision handling (`B4`)
 
 ## MVP scenes
 
@@ -56,25 +61,30 @@ These must be integrated only after the user provides the `mechanika/` folder co
 | `PreloadScene` | Required |
 | `MainMenuScene` | Required |
 | `BridgeScene` | Required |
-| `MapScene` | Required |
 | `EventScene` | Required |
 | `CrewScene` | Required |
-| `BattleScene` | Stub only, pending `mechanika/` |
+| `SystemsScene` | Required |
+| `TorporScene` | Required |
+| `MapScene` | Required |
+| `LogbookScene` | Required |
+| `ApproachScene` | Required in Act IV |
+| `EndingScene` | Required |
+| `GameOverScene` | Required |
+| `BattleScene` | Stub only |
 
-## MVP beacon types
+## MVP beacon / content statuses
 
 | Type | Status |
 |---|---|
-| `empty` | Required |
 | `event` | Required |
-| `shop` | Optional |
-| `distress` | Optional/simple event alias |
-| `combat` | Reserved |
-| `quest` | Reserved |
+| mission travel / approach content | Required |
+| `combat` | Stub/reserved |
+| `quest` | Deferred |
 
 ## Scope-control rules
 
-1. New ideas go to `docs/IDEAS_LATER.md`, not directly to code.
-2. New dependencies require an ADR in `docs/ADRs/`.
-3. The first playable version can be visually rough.
-4. If a feature depends on missing mechanics, add a stub and TODO, then stop.
+1. `mechanika/` is the gameplay source of truth; do not invent conflicting rules in code.
+2. New ideas outside MVP go to `docs/IDEAS_LATER.md`, not directly to code.
+3. New dependencies require an ADR in `docs/ADRs/`.
+4. The first playable version can be visually rough.
+5. If a feature depends on unresolved or deferred mechanics, keep it as a stub and stop there.
