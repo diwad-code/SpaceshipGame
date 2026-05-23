@@ -19,12 +19,14 @@ You are the project orchestrator for SpaceshipGame.
 
 Check:
 
+- `README.md`
 - `.github/copilot-instructions.md`
 - `.github/instructions/`
 - `.github/prompts/`
 - `.github/agents/`
 - `.github/skills/`
 - `docs/ARCHITECTURE.md`
+- `docs/COPILOT_WORKFLOW.md`
 - `docs/SCOPE.md`
 - `docs/IDEAS_LATER.md`
 - `docs/ADRs/`
@@ -32,10 +34,15 @@ Check:
 - `package.json`
 - `src/`
 
+If `package.json` and `src/` are missing, treat that as the expected Sprint 0 / pre-scaffold state and say so explicitly.
+
+If `mechanika/` exists but is still templates, placeholders, or open questions, treat mechanics-dependent work as still blocked and say so explicitly.
+
 Then report:
 
 ```md
 ## Project state
+Current phase:
 Found:
 Missing:
 Blocked by mechanika:
@@ -65,3 +72,5 @@ Use:
 ## Output
 
 Always end with the next 1-3 concrete commands or prompt invocations the user should run.
+
+If the repo is still in Sprint 0, prefer recommending `/prompt-skills-adoption` or project scaffold preparation before scene/system prompts.
