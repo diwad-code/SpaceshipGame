@@ -11,7 +11,7 @@ tools:
   - execute/runTests
 ---
 
-# /prompt-skills-adoption
+# /skills-adoption
 
 Autonomously execute the approved skills and MCP adoption plan for SpaceshipGame.
 

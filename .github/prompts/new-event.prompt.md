@@ -9,7 +9,7 @@ tools:
   - read/problems
 ---
 
-# /prompt-new-event
+# /new-event
 
 Create a new event for theme: `${input:theme}`.
 

@@ -103,13 +103,13 @@ Do not block MVP on broad coverage targets.
 
 ## Copilot workflow
 
-- Use `/prompt-game-dev` for project orchestration.
-- Use `/prompt-new-scene` for Phaser scenes.
-- Use `/prompt-new-system` for systems.
-- Use `/prompt-new-event` for event data.
-- Use `/prompt-data-schema` for JSON + Zod models.
-- Use `/prompt-pwa-check` before mobile testing.
-- Use `/prompt-mobile-ux` for phone/tablet UI review.
-- Use `/prompt-code-review` after implementation chunks.
+- Use `/game-dev` for project orchestration.
+- Use `/new-scene` for Phaser scenes.
+- Use `/new-system` for systems.
+- Use `/new-event` for event data.
+- Use `/data-schema` for JSON + Zod models.
+- Use `/pwa-check` before mobile testing.
+- Use `/mobile-ux` for phone/tablet UI review.
+- Use `/code-review` after implementation chunks.
 
-`/prompt-game-dev` is a custom project prompt file, not a built-in Copilot command.
+These custom slash commands come from the `name:` field in each file under `.github/prompts/`.

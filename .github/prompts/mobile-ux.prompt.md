@@ -8,7 +8,7 @@ tools:
   - read/problems
 ---
 
-# /prompt-mobile-ux
+# /mobile-ux
 
 Review the current UI for mobile and tablet usability.
 

@@ -8,7 +8,7 @@ tools:
   - read/problems
 ---
 
-# /prompt-code-review
+# /code-review
 
 Review the current changes for SpaceshipGame.
 

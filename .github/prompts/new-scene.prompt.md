@@ -9,7 +9,7 @@ tools:
   - read/problems
 ---
 
-# /prompt-new-scene
+# /new-scene
 
 Create or update a Phaser 4 scene for: `${input:sceneName}`.
 
